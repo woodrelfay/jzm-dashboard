@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兼职猫 · 零工市场行情</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+</script>
+<script src="dashboard_data.js"></script>
+<style>
+/* ====== Reset & Base ====== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#0F1923;color:#C8CDD0;font-family:'Segoe UI','Microsoft YaHei',sans-serif;
+  min-height:100vh;line-height:1.5;
+}
+a{color:#5B9BD5;text-decoration:none}
+
+/* ====== Top Bar ====== */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;border-bottom:1px solid #1E2D3D;
+  background:#111D2B;position:sticky;top:0;z-index:100;
+}
+.topbar h1{font-size:18px;font-weight:600;color:#E8ECF0;letter-spacing:.5px}
+.topbar h1 span{color:#FFD600;margin:0 4px}
+.topbar-right{display:flex;align-items:center;gap:16px;font-size:12px;color:#6B7D8E}
+.topbar-right .dot{width:7px;height:7px;border-radius:50%;background:#00C853;display:inline-block;margin-right:6px}
+.range-btns{display:flex;gap:2px}
+.range-btn{
+  padding:5px 14px;font-size:12px;border:1px solid #2A3A4A;background:transparent;
+  color:#8899AA;cursor:pointer;transition:all .2s;
+}
+.range-btn:first-child{border-radius:4px 0 0 4px}
+.range-btn:last-child{border-radius:0 4px 4px 0}
+.range-btn.active{background:#1A6DD4;border-color:#1A6DD4;color:#fff}
+
+/* ====== Main Container ====== */
+.container{max-width:1440px;margin:0 auto;padding:20px 28px}
+
+/* ====== KPI Cards ====== */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px}
+.kpi-card{
+  background:#152230;border:1px solid #1E2D3D;border-radius:8px;
+  padding:16px 20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;
+}
+.kpi-card:hover{border-color:#2A4A6A;background:#192940}
+.kpi-card.selected{border-color:#1A6DD4;box-shadow:0 0 0 1px #1A6DD4}
+.kpi-card .city-label{font-size:12px;color:#6B7D8E;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.kpi-card .city-value{font-size:32px;font-weight:700;color:#E8ECF0}
+.kpi-card .city-change{font-size:13px;margin-top:4px}
+.kpi-card .city-change.up{color:#00C853}
+.kpi-card .city-change.down{color:#FF1744}
+.kpi-card .city-change.flat{color:#6B7D8E}
+.kpi-card .city-sub{font-size:11px;color:#4A5D6E;margin-top:2px}
+.kpi-card.warn{border-color:#FF1744;animation:pulse-warn 2s infinite}
+@keyframes pulse-warn{0%,100%{box-shadow:0 0 0 0 rgba(255,23,68,.3)}50%{box-shadow:0 0 12px 2px rgba(255,23,68,.15)}}
+
+/* ====== Chart Rows ====== */
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.chart-row.single{grid-template-columns:1fr}
+.chart-row.triple{grid-template-columns:1fr 1fr 1fr}
+
+.panel{
+  background:#152230;border:1px solid #1E2D3D;border-radius:8px;padding:18px 20px;
+}
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.panel-title{font-size:14px;font-weight:600;color:#C8CDD0}
+.panel-note{font-size:11px;color:#4A5D6E}
+.chart-wrap{position:relative;width:100%}
+.chart-wrap canvas{width:100%!important}
+
+/* ====== Heatmap Calendar ====== */
+.heatmap-grid{display:grid;grid-template-columns:60px repeat(31,1fr);gap:2px;font-size:11px}
+.heatmap-label{
+  display:flex;align-items:center;justify-content:flex-end;
+  padding-right:8px;color:#6B7D8E;font-size:11px;height:22px;
+}
+.heatmap-cell{
+  aspect-ratio:1;border-radius:2px;position:relative;cursor:pointer;
+  transition:transform .15s;
+}
+.heatmap-cell:hover{transform:scale(1.4);z-index:2}
+.heatmap-cell.empty{background:#1A2533}
+.heatmap-day-label{
+  text-align:center;color:#4A5D6E;font-size:10px;height:22px;
+  display:flex;align-items:center;justify-content:center;
+}
+.heatmap-legend{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:#6B7D8E}
+.heatmap-legend .swatch{width:12px;height:12px;border-radius:2px}
+
+/* ====== Alerts ====== */
+.alerts-row{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.alert-tag{
+  padding:5px 12px;border-radius:4px;font-size:12px;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+}
+.alert-tag.warn{background:rgba(255,23,68,.15);color:#FF1744;border:1px solid rgba(255,23,68,.3)}
+.alert-tag.info{background:rgba(26,109,212,.15);color:#5B9BD5;border:1px solid rgba(26,109,212,.3)}
+
+/* ====== Ranking bars ====== */
+.rank-list{display:flex;flex-direction:column;gap:8px}
+.rank-item{display:flex;align-items:center;gap:10px}
+.rank-name{width:36px;font-size:12px;color:#8899AA;text-align:right}
+.rank-bar-wrap{flex:1;height:20px;background:#1A2533;border-radius:3px;overflow:hidden;position:relative}
+.rank-bar{height:100%;border-radius:3px;transition:width .6s ease}
+.rank-bar.gz{background:linear-gradient(90deg,#1A6DD4,#3B8FE8)}
+.rank-bar.sz{background:linear-gradient(90deg,#00A86B,#2ECC71)}
+.rank-bar.sh{background:linear-gradient(90deg,#E8622E,#F0844E)}
+.rank-bar.bj{background:linear-gradient(90deg,#8B5CF6,#A78BFA)}
+.rank-val{font-size:12px;color:#C8CDD0;min-width:32px;font-weight:600}
+
+/* ====== Star Jobs Table ====== */
+.star-table{width:100%;border-collapse:collapse;font-size:12px}
+.star-table th{
+  text-align:left;padding:10px 8px;color:#8899AA;font-weight:600;
+  border-bottom:2px solid #1E2D3D;white-space:nowrap;position:sticky;top:0;
+  background:#152230;font-size:11px;text-transform:uppercase;letter-spacing:.5px;
+}
+.star-table td{
+  padding:8px;border-bottom:1px solid #1A2533;color:#C8CDD0;
+  vertical-align:top;max-width:200px;overflow:hidden;text-overflow:ellipsis;
+}
+.star-table tbody tr:hover{background:rgba(26,109,212,.08)}
+.star-table tbody tr.star-row{background:rgba(255,214,0,.04)}
+.star-table .score-badge{
+  display:inline-block;background:#FFD600;color:#0F1923;font-weight:700;
+  padding:2px 7px;border-radius:3px;font-size:12px;min-width:24px;text-align:center;
+}
+.star-table .city-tag{
+  display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;
+  font-weight:600;white-space:nowrap;
+}
+.star-table a{color:#5B9BD5;text-decoration:none}
+.star-table a:hover{text-decoration:underline}
+.star-table .no-data{text-align:center;padding:30px;color:#6B7D8E}
+
+/* ====== Responsive ====== */
+@media(max-width:1024px){
+  .kpi-row{grid-template-columns:repeat(3,1fr)}
+  .chart-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .topbar{flex-direction:column;gap:8px}
+  .container{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== Top Bar ====== -->
+<div class="topbar">
+  <h1>兼职猫<span>·</span>零工市场行情</h1>
+  <div class="topbar-right">
+    <span><span class="dot" id="statusDot"></span>数据更新：<span id="updateTime">--</span></span>
+    <span id="refreshInfo" style="cursor:pointer;border-bottom:1px dashed #4A5D6E" title="点击手动刷新">--</span>
+    <span id="dayCount">--</span>
+    <div class="range-btns">
+      <button class="range-btn" data-range="7">7天</button>
+      <button class="range-btn active" data-range="30">30天</button>
+      <button class="range-btn" data-range="90">90天</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ====== Alerts ====== -->
+<div class="alerts-row" id="alerts"></div>
+
+<!-- ====== KPI Cards ====== -->
+<div class="kpi-row" id="kpiRow"></div>
+
+<!-- ====== Row 1: Trends + Quality ====== -->
+<div class="chart-row">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">岗位量趋势（通过筛选）</span>
+      <span class="panel-note" id="trendNote"></span>
+    </div>
+    <div class="chart-wrap"><canvas id="chartTrend"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">优质岗位率趋势</span>
+      <span class="panel-note">★≥7分 / 5-6分 / 4分</span>
+    </div>
+    <div class="chart-wrap"><canvas id="chartQuality"></canvas></div>
+  </div>
+</div>
+
+<!-- ====== Row 2: Spam Rate + City Ranking ====== -->
+<div class="chart-row">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">垃圾过滤率</span>
+      <span class="panel-note">spam / (spam + passed) %</span>
+    </div>
+    <div class="chart-wrap"><canvas id="chartSpam"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">本周城市排行</span>
+      <span class="panel-note" id="rankDimLabel">优质岗位量</span>
+      <div style="display:flex;gap:4px">
+        <button class="range-btn active rank-dim" data-dim="high" style="font-size:10px;padding:3px 8px">优质</button>
+        <button class="range-btn rank-dim" data-dim="passed" style="font-size:10px;padding:3px 8px">总通过</button>
+        <button class="range-btn rank-dim" data-dim="passRate" style="font-size:10px;padding:3px 8px">通过率</button>
+      </div>
+    </div>
+    <div class="rank-list" id="rankList"></div>
+  </div>
+</div>
+
+<!-- ====== Row 3: Heatmap Calendar ====== -->
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title">本月质量热力</span>
+    <span class="panel-note">色阶：通过岗位数（深绿多→灰少→红异常少）</span>
+  </div>
+  <div id="heatmap"></div>
+  <div class="heatmap-legend">
+    <span>少</span>
+    <span class="swatch" style="background:#1A2533"></span>
+    <span class="swatch" style="background:#1E3A2F"></span>
+    <span class="swatch" style="background:#1E5A3A"></span>
+    <span class="swatch" style="background:#1E8A4A"></span>
+    <span class="swatch" style="background:#00C853"></span>
+    <span>多</span>
+    <span class="swatch" style="background:#FF1744;margin-left:12px"></span>
+    <span>异常</span>
+  </div>
+</div>
+
+<!-- ====== Star Jobs Table ====== -->
+<div class="panel" style="margin-top:14px">
+  <div class="panel-header">
+    <span class="panel-title">★ 优质岗位列表</span>
+    <span class="panel-note" id="starJobNote"></span>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="star-table" id="starTable">
+      <thead>
+        <tr>
+          <th>城市</th><th>评分</th><th>岗位名称</th><th>地点</th>
+          <th>薪资</th><th>公司</th><th>工作时间</th><th>福利</th><th>工作内容</th>
+        </tr>
+      </thead>
+      <tbody id="starTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ====== Constants ======
+const MAIN = ['广州','深圳','上海','北京'];
+const PERI = ['东莞','佛山','珠海','中山','汕头'];
+const ALL_CITIES = [...MAIN, ...PERI];
+const CITY_COLORS = {
+  '广州':'#1A6DD4','深圳':'#00A86B','上海':'#E8622E','北京':'#8B5CF6',
+  '东莞':'#5B9BD5','佛山':'#3EC18A','珠海':'#F0844E','中山':'#A78BFA','汕头':'#7B8BA0'
+};
+const RANK_DIMS = {
+  high:'优质岗位量', passed:'总通过量',
+  passRate:'通过率%', spamRate:'垃圾率%'
+};
+
+let allData = null;
+let currentRange = 30;
+let selectedCity = null;
+
+// ====== Data Loading ======
+async function loadData(){
+  // Priority 1: inline JS variable (works with file://)
+  if(window.__DASHBOARD_DATA__&&window.__DASHBOARD_DATA__.days){
+    allData=window.__DASHBOARD_DATA__;
+    document.getElementById('updateTime').textContent=
+      allData.updated?allData.updated.replace('T',' ').substring(0,19):'--';
+    return;
+  }
+  // Priority 2: fetch (works with http://)
+  const paths=['dashboard_data.json'];
+  for(const p of paths){
+    try{
+      const resp=await fetch(p);
+      if(resp.ok){allData=await resp.json();break;}
+    }catch(e){}
+  }
+  if(allData){
+    document.getElementById('updateTime').textContent=
+      allData.updated?allData.updated.replace('T',' ').substring(0,19):'--';
+  }else{
+    document.getElementById('updateTime').textContent='加载失败';
+  }
+}
+
+// ====== Helpers ======
+function filterDays(){
+  if(!allData||!allData.days)return[];
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate()-currentRange);
+  return allData.days.filter(d=>new Date(d.date)>=cutoff);
+}
+
+function getLastWeekDays(){
+  if(!allData||!allData.days)return[];
+  const days=allData.days.slice(-7);
+  return days;
+}
+
+function getLatestDay(){
+  if(!allData||!allData.days.length)return null;
+  return allData.days[allData.days.length-1];
+}
+
+function getPrevDay(){
+  if(!allData||allData.days.length<2)return null;
+  return allData.days[allData.days.length-2];
+}
+function get7DayAvg(city,field){
+  if(!allData||allData.days.length<7)return 0;
+  const week=allData.days.slice(-8,-1);
+  const sum=week.reduce((s,d)=>s+(d.cities[city]?d.cities[city][field]:0),0);
+  return Math.round(sum/week.length);
+}
+
+function cityChange(latest,prev,city,field){
+  if(!latest||!prev)return {val:0,pct:0,dir:'flat'};
+  const c1=latest.cities[city];const c2=prev.cities[city];
+  if(!c1||!c2)return {val:0,pct:0,dir:'flat'};
+  const diff=c1[field]-c2[field];
+  const pct=c2[field]>0?Math.round(diff/c2[field]*100):0;
+  return {val:diff,pct,dir:diff>0?'up':diff<0?'down':'flat'};
+}
+
+// ====== Render KPI Cards ======
+function renderKPIs(){
+  const latest=getLatestDay();const prev=getPrevDay();
+  const row=document.getElementById('kpiRow');row.innerHTML='';
+
+  const cities=[...MAIN,'__total__'];
+  cities.forEach(city=>{
+    const isTotal=city==='__total__';
+    const label=isTotal?'全部城市':city;
+    let val,change;
+    if(isTotal){
+      val=latest?latest.totals.all_passed:0;
+      if(prev){
+        const diff=latest.totals.all_passed-prev.totals.all_passed;
+        const pct=prev.totals.all_passed>0?Math.round(diff/prev.totals.all_passed*100):0;
+        change={val:diff,pct,dir:diff>0?'up':diff<0?'down':'flat'};
+      }else{change={val:0,pct:0,dir:'flat'};}
+    }else{
+      val=latest&&latest.cities[city]?latest.cities[city].passed:0;
+      change=cityChange(latest,prev,city,'passed');
+    }
+    const dirClass=change.dir;
+    const arrow=change.dir==='up'?'↑':change.dir==='down'?'↓':'→';
+    const sign=change.val>0?'+':'';
+    const warn=!isTotal&&Math.abs(change.pct)>=20&&change.dir==='down';
+
+    const card=document.createElement('div');
+    card.className='kpi-card'+(warn?' warn':'')+(selectedCity===city?' selected':'');
+    card.dataset.city=city;
+    card.innerHTML=`
+      <div class="city-label">${label}</div>
+      <div class="city-value">${val}</div>
+      <div class="city-change ${dirClass}">${arrow} ${sign}${change.val} (${sign}${change.pct}%)</div>
+      <div class="city-sub">${isTotal?'':latest&&latest.cities[city]?'★'+latest.cities[city].high+' 优质':'--'}</div>
+    `;
+    card.addEventListener('click',()=>{
+      selectedCity=selectedCity===city?null:city;
+      document.querySelectorAll('.kpi-card').forEach(c=>c.classList.remove('selected'));
+      if(selectedCity)card.classList.add('selected');
+      renderAll();
+    });
+    row.appendChild(card);
+  });
+}
+
+// ====== Render Trend Chart ======
+let chartTrendInst=null;
+function renderTrend(){
+  const ctx=document.getElementById('chartTrend').getContext('2d');
+  if(chartTrendInst)chartTrendInst.destroy();
+
+  const days=filterDays();
+  const cities=selectedCity&&selectedCity!=='__total__'?[selectedCity]:MAIN;
+  const datasets=cities.map(city=>({
+    label:city,data:days.map(d=>d.cities[city]?d.cities[city].passed:null),
+    borderColor:CITY_COLORS[city],backgroundColor:CITY_COLORS[city]+'15',
+    borderWidth:2,pointRadius:2,pointHoverRadius:5,
+    tension:.3,fill:false,
+  }));
+
+  const noteEl=document.getElementById('trendNote');
+  if(days.length){
+    const first=days[0],last=days[days.length-1];
+    const fc=selectedCity&&selectedCity!=='__total__'?selectedCity:'全部';
+    const fv=first.totals?first.totals.all_passed:(first.cities[selectedCity]?first.cities[selectedCity].passed:0);
+    const lv=last.totals?last.totals.all_passed:(last.cities[selectedCity]?last.cities[selectedCity].passed:0);
+    noteEl.textContent=`${fc} · ${days.length}天 · 区间${lv-fv>=0?'+':''}${lv-fv}`;
+  }
+
+  chartTrendInst=new Chart(ctx,{
+    type:'line',data:{labels:days.map(d=>d.date.slice(5)),datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'bottom',labels:{color:'#8899AA',usePointStyle:true,boxWidth:8,padding:20}}
+      },
+      scales:{
+        x:{ticks:{color:'#4A5D6E',maxTicksLimit:12},grid:{color:'#1E2D3D'}},
+        y:{ticks:{color:'#4A5D6E'},grid:{color:'#1E2D3D'},beginAtZero:true}
+      }
+    }
+  });
+}
+
+// ====== Render Quality Chart ======
+let chartQualityInst=null;
+function renderQuality(){
+  const ctx=document.getElementById('chartQuality').getContext('2d');
+  if(chartQualityInst)chartQualityInst.destroy();
+
+  const days=filterDays();
+  chartQualityInst=new Chart(ctx,{
+    type:'bar',data:{
+      labels:days.map(d=>d.date.slice(5)),
+      datasets:[
+        {label:'★ 优质(≥7)',data:days.map(d=>d.totals.high),backgroundColor:'#FFD600',borderRadius:2},
+        {label:'中等(5-6)',data:days.map(d=>d.totals.medium),backgroundColor:'#3B8FE8',borderRadius:2},
+        {label:'合格(4)',data:days.map(d=>d.totals.low),backgroundColor:'#4A5D6E',borderRadius:2},
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'bottom',labels:{color:'#8899AA',usePointStyle:true,boxWidth:8,padding:20}}
+      },
+      scales:{
+        x:{stacked:true,ticks:{color:'#4A5D6E',maxTicksLimit:12},grid:{color:'#1E2D3D'}},
+        y:{stacked:true,ticks:{color:'#4A5D6E'},grid:{color:'#1E2D3D'}}
+      }
+    }
+  });
+}
+
+// ====== Render Spam Chart ======
+let chartSpamInst=null;
+function renderSpam(){
+  const ctx=document.getElementById('chartSpam').getContext('2d');
+  if(chartSpamInst)chartSpamInst.destroy();
+
+  const days=filterDays();
+  const datasets=MAIN.map(city=>({
+    label:city,data:days.map(d=>{
+      const c=d.cities[city];if(!c)return null;
+      const total=c.passed+c.spam;return total>0?Math.round(c.spam/total*100):0;
+    }),
+    borderColor:CITY_COLORS[city],borderWidth:1.5,pointRadius:2,
+    tension:.3,fill:false,
+  }));
+
+  chartSpamInst=new Chart(ctx,{
+    type:'line',data:{labels:days.map(d=>d.date.slice(5)),datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'bottom',labels:{color:'#8899AA',usePointStyle:true,boxWidth:8,padding:20}}
+      },
+      scales:{
+        x:{ticks:{color:'#4A5D6E',maxTicksLimit:12},grid:{color:'#1E2D3D'}},
+        y:{ticks:{color:'#4A5D6E',callback:v=>v+'%'},grid:{color:'#1E2D3D'},min:0}
+      }
+    }
+  });
+}
+
+// ====== Render City Ranking ======
+function renderRanking(){
+  const activeDim=document.querySelector('.rank-dim.active')?.dataset.dim||'high';
+  document.getElementById('rankDimLabel').textContent=RANK_DIMS[activeDim]||activeDim;
+
+  const weekDays=getLastWeekDays();
+  const totals={};
+  ALL_CITIES.forEach(c=>{totals[c]={passed:0,high:0,crawled:0,spam:0}});
+
+  weekDays.forEach(d=>{
+    ALL_CITIES.forEach(c=>{
+      const cd=d.cities[c];if(!cd)return;
+      totals[c].passed+=cd.passed;totals[c].high+=cd.high;
+      totals[c].crawled+=cd.crawled;totals[c].spam+=cd.spam;
+    });
+  });
+
+  let ranked;
+  if(activeDim==='passRate'){
+    ranked=ALL_CITIES.map(c=>({
+      city:c,val:totals[c].crawled>0?Math.round(totals[c].passed/totals[c].crawled*100):0
+    }));
+  }else if(activeDim==='spamRate'){
+    ranked=ALL_CITIES.map(c=>({
+      city:c,val:totals[c].crawled>0?Math.round(totals[c].spam/totals[c].crawled*100):0
+    }));
+  }else{
+    ranked=ALL_CITIES.map(c=>({city:c,val:totals[c][activeDim]||0}));
+  }
+  ranked.sort((a,b)=>activeDim==='spamRate'?a.val-b.val:b.val-a.val);
+
+  const maxVal=Math.max(...ranked.map(r=>r.val),1);
+  const colorKeys=['gz','sz','sh','bj','dg','fs','zh','zs','st'];
+  const list=document.getElementById('rankList');
+  list.innerHTML=ranked.map((r,i)=>{
+    const colorClass=colorKeys[ALL_CITIES.indexOf(r.city)]||'gz';
+    const pct=Math.round(r.val/maxVal*100);
+    return `<div class="rank-item">
+      <span class="rank-name">${r.city}</span>
+      <div class="rank-bar-wrap"><div class="rank-bar ${colorClass}" style="width:${pct}%"></div></div>
+      <span class="rank-val">${r.val}${activeDim.endsWith('Rate')?'%':''}</span>
+    </div>`;
+  }).join('');
+}
+
+// ====== Render Heatmap ======
+function renderHeatmap(){
+  const now=new Date();
+  const year=now.getFullYear();const month=now.getMonth();
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  const firstDow=new Date(year,month,1).getDay();//0=Sun
+
+  // Build city×day value map
+  const monthData={};
+  if(allData&&allData.days){
+    allData.days.forEach(d=>{
+      const dt=new Date(d.date);
+      if(dt.getFullYear()===year&&dt.getMonth()===month){
+        const day=dt.getDate();
+        MAIN.forEach(c=>{
+          if(!monthData[c])monthData[c]={};
+          monthData[c][day]=d.cities[c]?d.cities[c].passed:0;
+        });
+      }
+    });
+  }
+
+  // Compute thresholds
+  let allVals=[];
+  MAIN.forEach(c=>{Object.values(monthData[c]||{}).forEach(v=>allVals.push(v));});
+  if(allVals.length===0)allVals=[0,1];
+  allVals.sort((a,b)=>a-b);
+  const p25=allVals[Math.floor(allVals.length*.25)];
+  const p50=allVals[Math.floor(allVals.length*.5)];
+  const p75=allVals[Math.floor(allVals.length*.75)];
+  const p95=allVals[Math.floor(allVals.length*.95)];
+
+  function cellColor(v,city){
+    if(v===undefined||v===null)return'empty';
+    // Check anomaly: <30% of this city's average
+    const cityVals=Object.values(monthData[city]||{}).filter(x=>x>0);
+    if(cityVals.length>=3){
+      const avg=cityVals.reduce((a,b)=>a+b,0)/cityVals.length;
+      if(v<avg*.3)return'#FF1744';
+    }
+    if(v===0)return'#1A2533';
+    if(v<=p25)return'#1E3A2F';
+    if(v<=p50)return'#1E5A3A';
+    if(v<=p75)return'#1E8A4A';
+    return'#00C853';
+  }
+
+  const container=document.getElementById('heatmap');
+  // Day headers
+  let html='<div class="heatmap-grid">';
+  html+='<div class="heatmap-day-label"></div>';
+  for(let d=1;d<=daysInMonth;d++){
+    html+=`<div class="heatmap-day-label">${d}</div>`;
+  }
+  MAIN.forEach(city=>{
+    html+=`<div class="heatmap-label">${city}</div>`;
+    for(let d=1;d<=daysInMonth;d++){
+      const v=monthData[city]?monthData[city][d]:undefined;
+      const color=cellColor(v,city);
+      const title=v!==undefined?`${city} ${month+1}/${d}: ${v}岗`:'无数据';
+      if(color==='empty'){
+        html+=`<div class="heatmap-cell empty" title="${title}"></div>`;
+      }else{
+        html+=`<div class="heatmap-cell" title="${title}" style="background:${color}"></div>`;
+      }
+    }
+  });
+  html+='</div>';
+  container.innerHTML=html;
+}
+
+// ====== Render Alerts ======
+function renderAlerts(){
+  const latest=getLatestDay();const days=allData.days;
+  if(!latest||days.length<5)return;
+  const alerts=[];
+
+  // Single-city sudden drop
+  const recentDays=days.slice(-8,-1); // 7 days before latest
+  MAIN.forEach(city=>{
+    if(recentDays.length<3)return;
+    const avg=recentDays.reduce((s,d)=>s+(d.cities[city]?d.cities[city].passed:0),0)/recentDays.length;
+    const today=latest.cities[city]?latest.cities[city].passed:0;
+    if(avg>3&&today<avg*.6){
+      alerts.push({type:'warn',text:`${city}岗位骤降：今日${today}，近7日均值${Math.round(avg)}`});
+    }
+  });
+
+  // Spam surge
+  const spamRecent=days.slice(-8,-1);
+  if(spamRecent.length>=3){
+    const spamAvg=spamRecent.reduce((s,d)=>s+d.totals.spam,0)/spamRecent.length;
+    if(latest.totals.spam>spamAvg*1.5&&latest.totals.spam>10){
+      alerts.push({type:'warn',text:`垃圾岗位激增：今日${latest.totals.spam}条，近7日均值${Math.round(spamAvg)}条`});
+    }
+  }
+
+  // Quality drought
+  const totalPassed=latest.totals.all_passed;
+  if(totalPassed>10&&latest.totals.high/totalPassed<.05){
+    alerts.push({type:'warn',text:`优质岗位枯竭：★占比仅${Math.round(latest.totals.high/totalPassed*100)}%`});
+  }
+
+  // Crawl failure
+  MAIN.forEach(city=>{
+    if(latest.cities[city]&&latest.cities[city].crawled===0){
+      alerts.push({type:'warn',text:`${city}抓取可能失败：抓取数为0`});
+    }
+  });
+
+  const container=document.getElementById('alerts');
+  if(alerts.length===0){
+    container.innerHTML='<div class="alert-tag info">✓ 各项指标正常</div>';
+  }else{
+    container.innerHTML=alerts.map(a=>
+      `<div class="alert-tag ${a.type}">⚠ ${a.text}</div>`
+    ).join('');
+  }
+}
+
+// ====== Event Handlers ======
+document.querySelectorAll('.range-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    if(this.classList.contains('rank-dim')){
+      document.querySelectorAll('.rank-dim').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+      renderRanking();
+      return;
+    }
+    document.querySelectorAll('.range-btns .range-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    currentRange=parseInt(this.dataset.range);
+    renderCharts();
+  });
+});
+
+// ====== Render Star Jobs Table ======
+function renderStarJobs(){
+  const tbody=document.getElementById('starTableBody');
+  const note=document.getElementById('starJobNote');
+  if(!allData||!allData.days.length){tbody.innerHTML='';return;}
+
+  // Collect star jobs from recent 7 days, grouped by date (newest first)
+  const recentDays=allData.days.slice(-7).reverse();
+  const groups=[];
+  recentDays.forEach(d=>{
+    if(d.star_jobs&&d.star_jobs.length)groups.push({date:d.date,jobs:d.star_jobs});
+  });
+
+  if(!groups.length){
+    tbody.innerHTML='<tr><td colspan="10" class="no-data">近7天暂无★优质岗位（≥7分）</td></tr>';
+    note.textContent='近7天 · 0个';
+    return;
+  }
+
+  const total=groups.reduce((s,g)=>s+g.jobs.length,0);
+  const latestDate=allData.days[allData.days.length-1].date;
+  note.textContent=`近7天 · ${total}个优质岗位`;
+
+  const cityColors={
+    '广州':'#1A6DD4','深圳':'#00A86B','上海':'#E8622E','北京':'#8B5CF6',
+    '东莞':'#5B9BD5','佛山':'#3EC18A','珠海':'#F0844E','中山':'#A78BFA','汕头':'#7B8BA0'
+  };
+
+  let html='';
+  groups.forEach((g)=>{
+    const isToday=g.date===latestDate;
+    html+=`<tr style="background:#111D2B"><td colspan="10" style="padding:6px 8px;color:${isToday?'#FFD600':'#8899AA'};font-weight:600;font-size:12px;border-bottom:1px solid #2A3A4A">${isToday?'● 今天 '+g.date:g.date} · ${g.jobs.length}个</td></tr>`;
+    g.jobs.forEach(j=>{
+      html+=`<tr class="star-row">
+        <td style="padding-left:14px"><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
+        <td><span class="score-badge">${j.score}</span></td>
+        <td><a href="${j.url}" target="_blank" title="${j.title}">${j.title.length>22?j.title.slice(0,22)+'…':j.title}</a></td>
+        <td title="${j.location}">${(j.location||'--').length>10?(j.location||'--').slice(0,10)+'…':(j.location||'--')}</td>
+        <td>${j.salary||'--'}</td>
+        <td>${j.company||'--'}</td>
+        <td>${j.work_hours||'--'}</td>
+        <td>${j.welfare||'--'}</td>
+        <td title="${j.job_content}">${(j.job_content||'--').length>20?(j.job_content||'--').slice(0,20)+'…':(j.job_content||'--')}</td>
+      </tr>`;
+    });
+  });
+  tbody.innerHTML=html;
+}
+
+// ====== Render All ======
+function renderCharts(){
+  renderTrend();renderQuality();renderSpam();
+}
+function renderAll(){
+  renderKPIs();renderCharts();renderRanking();renderHeatmap();renderAlerts();renderStarJobs();
+  document.getElementById('dayCount').textContent=
+    allData&&allData.days?`${allData.days.length}天数据`:'';
+}
+
+// ====== Auto Refresh ======
+const REFRESH_SEC=300; // 5 minutes
+let refreshTimer=REFRESH_SEC;
+
+function updateRefreshUI(){
+  const el=document.getElementById('refreshInfo');
+  if(!el)return;
+  const m=Math.floor(refreshTimer/60);
+  const s=refreshTimer%60;
+  el.textContent=`${m}:${String(s).padStart(2,'0')}后刷新`;
+  const dot=document.getElementById('statusDot');
+  if(dot)dot.style.background=refreshTimer<30?'#FF1744':'#00C853';
+}
+
+async function autoRefresh(){
+  refreshTimer--;
+  updateRefreshUI();
+  if(refreshTimer>0)return;
+  refreshTimer=REFRESH_SEC;
+
+  // Re-fetch data
+  const paths=['dashboard_data.json'];
+  for(const p of paths){
+    try{
+      const resp=await fetch(p+'?t='+Date.now());
+      if(resp.ok){
+        const fresh=await resp.json();
+        if(fresh&&fresh.days&&fresh.days.length){
+          allData=fresh;
+          document.getElementById('updateTime').textContent=
+            fresh.updated?fresh.updated.replace('T',' ').substring(0,19):'--';
+          document.getElementById('dayCount').textContent=`${fresh.days.length}天数据`;
+          renderAll();
+        }
+        break;
+      }
+    }catch(e){}
+  }
+}
+
+// ====== Init ======
+(async function(){
+  await loadData();
+  if(!allData||!allData.days||!allData.days.length){
+    document.body.innerHTML+='<div style="text-align:center;padding:60px;color:#8899AA">暂无数据，请先运行 jzm_daily.py 生成日报</div>';
+    return;
+  }
+  document.querySelectorAll('.chart-wrap').forEach(el=>el.style.height='320px');
+  renderAll();
+  updateRefreshUI();
+  setInterval(autoRefresh,1000);
+  document.getElementById('refreshInfo').addEventListener('click',()=>{
+    refreshTimer=0;autoRefresh();
+  });
+})();
+</script>
+</body>
+</html>
