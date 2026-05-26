@@ -190,14 +190,14 @@ a{color:#5B9BD5;text-decoration:none}
 <!-- ====== Row 1: Trends + Quality ====== -->
 <div class="chart-row">
   <div class="panel">
-    <div class="panel-header">
+    <div class="panel-header" title="观察：四城每日通过筛选的岗位数量变化。结论：趋势上涨=平台岗位供给改善或过滤放宽；趋势下跌=供给萎缩或过滤收紧；单城骤降需排查抓取故障；7日均线黄色虚线帮你滤掉每日噪音看真实走向。">
       <span class="panel-title">岗位量趋势（通过筛选）</span>
       <span class="panel-note" id="trendNote"></span>
     </div>
     <div class="chart-wrap"><canvas id="chartTrend"></canvas></div>
   </div>
   <div class="panel">
-    <div class="panel-header">
+    <div class="panel-header" title="观察：金色=★优质岗(≥7分)占比，蓝色=中等(5-6分)，灰色=合格(4分)。结论：金色越宽=高价值岗位越多，内容选题素材越好；灰色占主导=平台充斥低质岗，需关注过滤规则是否过松；优质率持续<5%说明当天几乎没有好岗位。">
       <span class="panel-title">优质岗位率趋势</span>
       <span class="panel-note">★≥7分 / 5-6分 / 4分</span>
     </div>
@@ -208,14 +208,14 @@ a{color:#5B9BD5;text-decoration:none}
 <!-- ====== Row 2: Spam Rate + City Ranking ====== -->
 <div class="chart-row">
   <div class="panel">
-    <div class="panel-header">
+    <div class="panel-header" title="观察：绿柱=通过率(passed/crawled)，红折线=垃圾率(spam/total)。结论：绿高红低=平台健康，优质岗位充足；绿低红高=垃圾泛滥或过滤过严把好岗误杀了；红线上穿绿柱=当日抓取的岗位大部分不可用，考虑优化过滤规则；两线背离=异常信号。">
       <span class="panel-title">通过率 & 垃圾过滤率</span>
       <span class="panel-note">passed/crawled % · spam/(spam+passed) %</span>
     </div>
     <div class="chart-wrap"><canvas id="chartSpam"></canvas></div>
   </div>
   <div class="panel">
-    <div class="panel-header">
+    <div class="panel-header" title="观察：按所选维度(优质/总通过/通过率)对9城排名。结论：广州深圳通常领先=大城市岗位多；周边城市持续垫底=不值得投入内容资源；切换维度看不同切面：优质量=质量导向，通过率=效率导向，帮你决定服务号次条写哪个城市。">
       <span class="panel-title">本周城市排行</span>
       <span class="panel-note" id="rankDimLabel">优质岗位量</span>
       <div style="display:flex;gap:4px">
@@ -230,7 +230,7 @@ a{color:#5B9BD5;text-decoration:none}
 
 <!-- ====== Row 3: Heatmap Calendar ====== -->
 <div class="panel">
-  <div class="panel-header">
+  <div class="panel-header" title="观察：行=城市，列=日期，色深=通过岗位多。结论：一行全绿=该城持续有料；大片灰色=数据缺失(抓取失败或当天没跑)；红色格子=异常低值(该城当日岗位骤降)，需排查抓取或平台供给问题；周末通常偏少属正常。">
     <span class="panel-title">本月质量热力</span>
     <span class="panel-note">色阶：通过岗位数（深绿多→灰少→红异常少）</span>
   </div>
@@ -250,7 +250,7 @@ a{color:#5B9BD5;text-decoration:none}
 
 <!-- ====== Star Jobs Table ====== -->
 <div class="panel" style="margin-top:14px">
-  <div class="panel-header">
+  <div class="panel-header" title="观察：近5天所有通过筛选(≥4分)的岗位明细，按日期分组，今天黄色高亮。结论：金色★=优质岗(≥7分)值得重点关注，适合做内容选题素材；蓝色=中等(5-6分)；灰色=合格(4分)；列表空=当天没有能通过筛选的岗位，检查过滤规则是否过严。点击岗位标题可跳转详情页。">
     <span class="panel-title">近5天通过筛选的岗位</span>
     <span class="panel-note" id="starJobNote"></span>
   </div>
