@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-25T17:40:23+08:00",
+  "updated": "2026-05-26T09:14:34+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -1236,6 +1236,96 @@
         "medium": 2,
         "low": 0,
         "spam": 264
+      },
+      "star_jobs": []
+    },
+    {
+      "date": "2026-05-26",
+      "cities": {
+        "广州": {
+          "crawled": 15,
+          "passed": 1,
+          "high": 0,
+          "medium": 1,
+          "low": 0,
+          "spam": 27
+        },
+        "深圳": {
+          "crawled": 15,
+          "passed": 2,
+          "high": 0,
+          "medium": 2,
+          "low": 0,
+          "spam": 22
+        },
+        "上海": {
+          "crawled": 15,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 30
+        },
+        "北京": {
+          "crawled": 15,
+          "passed": 1,
+          "high": 0,
+          "medium": 1,
+          "low": 0,
+          "spam": 27
+        },
+        "东莞": {
+          "crawled": 15,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 30
+        },
+        "佛山": {
+          "crawled": 15,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 30
+        },
+        "珠海": {
+          "crawled": 15,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 30
+        },
+        "中山": {
+          "crawled": 15,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 30
+        },
+        "汕头": {
+          "crawled": 15,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 30
+        }
+      },
+      "totals": {
+        "main_crawled": 60,
+        "main_passed": 4,
+        "peri_crawled": 75,
+        "peri_passed": 0,
+        "all_crawled": 135,
+        "all_passed": 4,
+        "high": 0,
+        "medium": 4,
+        "low": 0,
+        "spam": 256
       },
       "star_jobs": []
     }
