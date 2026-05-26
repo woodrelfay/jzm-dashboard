@@ -236,7 +236,7 @@ a{color:#5B9BD5;text-decoration:none}
 <!-- ====== Star Jobs Table ====== -->
 <div class="panel" style="margin-top:14px">
   <div class="panel-header">
-    <span class="panel-title">★ 优质岗位列表</span>
+    <span class="panel-title">今日通过筛选的岗位</span>
     <span class="panel-note" id="starJobNote"></span>
   </div>
   <div style="overflow-x:auto">
@@ -664,53 +664,49 @@ document.querySelectorAll('.range-btn').forEach(btn=>{
   });
 });
 
-// ====== Render Star Jobs Table ======
+// ====== Render Passed Jobs Table ======
 function renderStarJobs(){
   const tbody=document.getElementById('starTableBody');
   const note=document.getElementById('starJobNote');
   if(!allData||!allData.days.length){tbody.innerHTML='';return;}
 
-  // Collect star jobs from recent 7 days, grouped by date (newest first)
-  const recentDays=allData.days.slice(-7).reverse();
-  const groups=[];
-  recentDays.forEach(d=>{
-    if(d.star_jobs&&d.star_jobs.length)groups.push({date:d.date,jobs:d.star_jobs});
-  });
+  const latest=getLatestDay();
+  if(!latest){tbody.innerHTML='';return;}
 
-  if(!groups.length){
-    tbody.innerHTML='<tr><td colspan="10" class="no-data">近7天暂无★优质岗位（≥7分）</td></tr>';
-    note.textContent='近7天 · 0个';
+  // Read from passed_jobs (all score>=4), fallback to star_jobs for old data
+  let jobs=latest.passed_jobs||latest.star_jobs||[];
+
+  if(!jobs.length){
+    tbody.innerHTML='<tr><td colspan="10" class="no-data">今日暂无通过筛选的岗位</td></tr>';
+    note.textContent=latest.date+' · 0个';
     return;
   }
-
-  const total=groups.reduce((s,g)=>s+g.jobs.length,0);
-  const latestDate=allData.days[allData.days.length-1].date;
-  note.textContent=`近7天 · ${total}个优质岗位`;
+  note.textContent=latest.date+' · '+jobs.length+'个通过';
 
   const cityColors={
     '广州':'#1A6DD4','深圳':'#00A86B','上海':'#E8622E','北京':'#8B5CF6',
     '东莞':'#5B9BD5','佛山':'#3EC18A','珠海':'#F0844E','中山':'#A78BFA','汕头':'#7B8BA0'
   };
 
-  let html='';
-  groups.forEach((g)=>{
-    const isToday=g.date===latestDate;
-    html+=`<tr style="background:#111D2B"><td colspan="10" style="padding:6px 8px;color:${isToday?'#FFD600':'#8899AA'};font-weight:600;font-size:12px;border-bottom:1px solid #2A3A4A">${isToday?'● 今天 '+g.date:g.date} · ${g.jobs.length}个</td></tr>`;
-    g.jobs.forEach(j=>{
-      html+=`<tr class="star-row">
-        <td style="padding-left:14px"><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
-        <td><span class="score-badge">${j.score}</span></td>
-        <td><a href="${j.url}" target="_blank" title="${j.title}">${j.title.length>22?j.title.slice(0,22)+'…':j.title}</a></td>
-        <td title="${j.location}">${(j.location||'--').length>10?(j.location||'--').slice(0,10)+'…':(j.location||'--')}</td>
-        <td>${j.salary||'--'}</td>
-        <td>${j.company||'--'}</td>
-        <td>${j.work_hours||'--'}</td>
-        <td>${j.welfare||'--'}</td>
-        <td title="${j.job_content}">${(j.job_content||'--').length>20?(j.job_content||'--').slice(0,20)+'…':(j.job_content||'--')}</td>
-      </tr>`;
-    });
-  });
-  tbody.innerHTML=html;
+  function scoreBadge(s){
+    if(s>=7)return `<span class="score-badge" style="background:#FFD600;color:#0F1923">★${s}</span>`;
+    if(s>=5)return `<span class="score-badge" style="background:#3B8FE8;color:#fff">${s}</span>`;
+    return `<span class="score-badge" style="background:#4A5D6E;color:#C8CDD0">${s}</span>`;
+  }
+
+  tbody.innerHTML=jobs.map(j=>`
+    <tr class="${j.score>=7?'star-row':''}">
+      <td><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
+      <td>${scoreBadge(j.score)}</td>
+      <td><a href="${j.url}" target="_blank" title="${j.title}">${j.title.length>22?j.title.slice(0,22)+'…':j.title}</a></td>
+      <td title="${j.location}">${(j.location||'--').length>10?(j.location||'--').slice(0,10)+'…':(j.location||'--')}</td>
+      <td>${j.salary||'--'}</td>
+      <td>${j.company||'--'}</td>
+      <td>${j.work_hours||'--'}</td>
+      <td>${j.welfare||'--'}</td>
+      <td title="${j.job_content}">${(j.job_content||'--').length>20?(j.job_content||'--').slice(0,20)+'…':(j.job_content||'--')}</td>
+    </tr>
+  `).join('');
 }
 
 // ====== Render All ======

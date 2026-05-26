@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-26T09:14:34+08:00",
+  "updated": "2026-05-26T09:22:40+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -1244,11 +1244,11 @@
       "cities": {
         "广州": {
           "crawled": 15,
-          "passed": 1,
+          "passed": 2,
           "high": 0,
-          "medium": 1,
+          "medium": 2,
           "low": 0,
-          "spam": 27
+          "spam": 24
         },
         "深圳": {
           "crawled": 15,
@@ -1260,11 +1260,11 @@
         },
         "上海": {
           "crawled": 15,
-          "passed": 0,
+          "passed": 1,
           "high": 0,
           "medium": 0,
-          "low": 0,
-          "spam": 30
+          "low": 1,
+          "spam": 27
         },
         "北京": {
           "crawled": 15,
@@ -1317,17 +1317,90 @@
       },
       "totals": {
         "main_crawled": 60,
-        "main_passed": 4,
+        "main_passed": 6,
         "peri_crawled": 75,
         "peri_passed": 0,
         "all_crawled": 135,
-        "all_passed": 4,
+        "all_passed": 6,
         "high": 0,
-        "medium": 4,
-        "low": 0,
-        "spam": 256
+        "medium": 5,
+        "low": 1,
+        "spam": 250
       },
-      "star_jobs": []
+      "passed_jobs": [
+        {
+          "city": "深圳",
+          "title": "松岗冲浪板厂长白班220元一天",
+          "url": "https://shenzhen.jianzhimao.com/job/amdheVNKSWFkVWs9.html",
+          "score": 6,
+          "location": "宝安区松岗满京华-科创工坊",
+          "salary": "工资:；220元/天",
+          "company": "",
+          "work_hours": "2026-05-23至2026-08-31",
+          "welfare": "",
+          "job_content": "有装配，打螺丝/组装工作经验者优先；6.公司"
+        },
+        {
+          "city": "北京",
+          "title": "无学历要求180无周结客服",
+          "url": "https://beijing.jianzhimao.com/job/UmpFZmMvTkZSczA9.html",
+          "score": 6,
+          "location": "北京市海淀区北清路中关村翠湖科技园",
+          "salary": "工资:；180元/天",
+          "company": "",
+          "work_hours": "9:00-18:00",
+          "welfare": "",
+          "job_content": "打"
+        },
+        {
+          "city": "广州",
+          "title": "晚上周末兼职超市配送日结",
+          "url": "https://guangzhou.jianzhimao.com/job/Y2YybEpnTkc0Umc9.html",
+          "score": 5,
+          "location": "广东省广州市天河",
+          "salary": "工资:；400元/天",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "就近配送烟草兼职",
+          "url": "https://guangzhou.jianzhimao.com/job/VmtzaE5jMVh1ZVE9.html",
+          "score": 5,
+          "location": "广东省广州市天河",
+          "salary": "工资:；400元/天",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "深圳",
+          "title": "南山产品包装200一天",
+          "url": "https://shenzhen.jianzhimao.com/job/WmU4N21MZEY0UFE9.html",
+          "score": 5,
+          "location": "南山区科技园比克科技大厦",
+          "salary": "工资:；200元/天",
+          "company": "",
+          "work_hours": "2026-05-11至2026-11-10",
+          "welfare": "",
+          "job_content": "手机、电子产品包装、组装等；（坐岗）"
+        },
+        {
+          "city": "上海",
+          "title": "影院检票员日结小时工",
+          "url": "https://shanghai.jianzhimao.com/job/b3lKK1VuRDVYdXM9.html",
+          "score": 4,
+          "location": "上海各区域就近分配",
+          "salary": "工资:；298元/天",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": "==；1.验票员；（查验入场票据真伪）；兼职"
+        }
+      ]
     }
   ]
 }
