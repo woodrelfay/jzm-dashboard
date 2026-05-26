@@ -870,13 +870,17 @@ function updateRefreshUI(){
   if(dot)dot.style.background=refreshTimer<30?'#FF1744':'#00C853';
 }
 
-async function autoRefresh(){
-  refreshTimer--;
-  updateRefreshUI();
-  if(refreshTimer>0)return;
-  refreshTimer=REFRESH_SEC;
+function flashStatus(msg,ok){
+  const el=document.getElementById('refreshInfo');
+  if(!el)return;
+  el.textContent=msg;
+  el.style.color=ok?'#00C853':'#FF9800';
+  el.style.borderBottomColor=ok?'#00C853':'#FF9800';
+  setTimeout(()=>{el.style.color='';el.style.borderBottomColor='';updateRefreshUI();},2500);
+}
 
-  // Re-fetch data
+async function doRefresh(){
+  const oldUpdated=allData&&allData.updated;
   const paths=['dashboard_data.json'];
   for(const p of paths){
     try{
@@ -884,16 +888,30 @@ async function autoRefresh(){
       if(resp.ok){
         const fresh=await resp.json();
         if(fresh&&fresh.days&&fresh.days.length){
+          if(oldUpdated&&fresh.updated===oldUpdated){
+            flashStatus('已是最新数据',true);
+            return;
+          }
           allData=fresh;
           document.getElementById('updateTime').textContent=
             fresh.updated?fresh.updated.replace('T',' ').substring(0,19):'--';
           document.getElementById('dayCount').textContent=`${fresh.days.length}天数据`;
           renderAll();
+          flashStatus('✓ 数据已更新',true);
         }
-        break;
+        return;
       }
     }catch(e){}
   }
+  flashStatus('刷新失败',false);
+}
+
+async function autoRefresh(){
+  refreshTimer--;
+  updateRefreshUI();
+  if(refreshTimer>0)return;
+  refreshTimer=REFRESH_SEC;
+  await doRefresh();
 }
 
 // ====== Init ======
@@ -908,7 +926,7 @@ async function autoRefresh(){
   updateRefreshUI();
   setInterval(autoRefresh,1000);
   document.getElementById('refreshInfo').addEventListener('click',()=>{
-    refreshTimer=0;autoRefresh();
+    refreshTimer=REFRESH_SEC;doRefresh();
   });
 })();
 </script>
