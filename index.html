@@ -884,7 +884,8 @@ function renderStarJobs(){
     '广州':'#1A6DD4','深圳':'#00A86B','上海':'#E8622E','北京':'#8B5CF6',
     '东莞':'#5B9BD5','佛山':'#3EC18A','珠海':'#F0844E','中山':'#A78BFA','汕头':'#7B8BA0'
   };
-  function scoreBadge(s){
+  function scoreBadge(s,v){
+    if(v)return `<span class="score-badge" style="background:#FFD600;color:#0F1923" title="认证企业">★9 认证</span>`;
     if(s>=7)return `<span class="score-badge" style="background:#FFD600;color:#0F1923">★${s}</span>`;
     if(s>=5)return `<span class="score-badge" style="background:#3B8FE8;color:#fff">${s}</span>`;
     return `<span class="score-badge" style="background:#4A5D6E;color:#C8CDD0">${s}</span>`;
@@ -897,7 +898,7 @@ function renderStarJobs(){
     g.jobs.forEach(j=>{
       html+=`<tr class="${j.score>=7?'star-row':''}">
         <td style="padding-left:14px"><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
-        <td>${scoreBadge(j.score)}</td>
+        <td>${scoreBadge(j.score,j.verified)}</td>
         <td><a href="${j.url}" target="_blank" title="${j.title}">${j.title.length>22?j.title.slice(0,22)+'…':j.title}</a></td>
         <td title="${j.location}">${(j.location||'--').length>10?(j.location||'--').slice(0,10)+'…':(j.location||'--')}</td>
         <td>${j.salary||'--'}</td>
