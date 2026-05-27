@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27T09:31:14+08:00",
+  "updated": "2026-05-27T11:36:38+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -1407,27 +1407,27 @@
       "cities": {
         "广州": {
           "crawled": 15,
-          "passed": 5,
-          "high": 1,
-          "medium": 4,
-          "low": 0,
-          "spam": 15
+          "passed": 1,
+          "high": 0,
+          "medium": 0,
+          "low": 1,
+          "spam": 27
         },
         "深圳": {
           "crawled": 15,
-          "passed": 1,
-          "high": 0,
+          "passed": 3,
+          "high": 2,
           "medium": 1,
           "low": 0,
-          "spam": 27
+          "spam": 21
         },
         "上海": {
           "crawled": 15,
-          "passed": 2,
-          "high": 0,
-          "medium": 1,
-          "low": 1,
-          "spam": 24
+          "passed": 7,
+          "high": 1,
+          "medium": 2,
+          "low": 4,
+          "spam": 9
         },
         "北京": {
           "crawled": 15,
@@ -1480,107 +1480,119 @@
       },
       "totals": {
         "main_crawled": 60,
-        "main_passed": 9,
+        "main_passed": 12,
         "peri_crawled": 75,
         "peri_passed": 0,
         "all_crawled": 135,
-        "all_passed": 9,
-        "high": 1,
-        "medium": 7,
-        "low": 1,
-        "spam": 243
+        "all_passed": 12,
+        "high": 3,
+        "medium": 4,
+        "low": 5,
+        "spam": 234
       },
       "passed_jobs": [
         {
-          "city": "广州",
-          "title": "GAP广州君超中心店兼职",
-          "url": "https://guangzhou.jianzhimao.com/job/dmNMMjY4bmNEYjA9.html",
-          "score": 7,
-          "location": "广州君超中心店（天河区黄埔大道中652号君超中心GAP）（科韵路地铁A/B口）",
-          "salary": "工资:；23元/小时",
+          "city": "上海",
+          "title": "娃娃机补货员300日结小时工",
+          "url": "https://shanghai.jianzhimao.com/job/KzlFSTEzRkhNNmc9.html",
+          "score": 8,
+          "location": "黄埔、徐汇、普陀、浦东、松江、闵行、宝山、嘉定、杨浦、静安，各大城区均可参加可就近安排",
+          "salary": "工资:；300元/天",
           "company": "",
-          "work_hours": "每周出勤3天（含周末），出勤当天可提供4-8小时排班，法定节假日可提供出勤，能",
+          "work_hours": "4-8小时 有休息时间(具体以门店为准)",
           "welfare": "",
-          "job_content": "卖场服务/收银台/试衣间/叠标/库房补货/减价执行等；1、提供良好的顾客服务；；2、熟悉商品基本知识；；3、随时整理商品陈列及补货调整；；4、卖场辅助销售，整理货品及陈列，收银等。；二、"
-        },
-        {
-          "city": "广州",
-          "title": "三叶草广州乐峰广场店兼职店员",
-          "url": "https://guangzhou.jianzhimao.com/job/Z3MvUXN3eWpHc2c9.html",
-          "score": 6,
-          "location": "广州乐峰广场三叶草店（海珠区工业大道北106-108号乐峰广场B1-S25号阿迪三叶草店）；",
-          "salary": "工资:；192元/天",
-          "company": "",
-          "work_hours": "",
-          "welfare": "",
-          "job_content": "在卖场进行理货及陈列、顾客服务、整理仓库、收银等；；二、"
-        },
-        {
-          "city": "广州",
-          "title": "ZARA广州天环广场社会兼职",
-          "url": "https://guangzhou.jianzhimao.com/job/QXIzR2UrK3JYTnc9.html",
-          "score": 6,
-          "location": "广州天环广场店【天河区天河路218号天环广场负一层ZARA】",
-          "salary": "工资:；24元/小时",
-          "company": "",
-          "work_hours": "每周工作不少于20小时，周中2天+周末1天；",
-          "welfare": "",
-          "job_content": "卖场服务/收银台/试衣间/叠标/库房拆包补货/出货返货/减价执行/价签核对等；二、"
-        },
-        {
-          "city": "广州",
-          "title": "阿迪三叶草广州荔湾领展店兼职",
-          "url": "https://guangzhou.jianzhimao.com/job/VFVYNE1XTGQ2dWc9.html",
-          "score": 6,
-          "location": "广州市荔湾区黄沙大道8号荔湾领展广场一层126-127号商铺阿迪达斯三叶草店；",
-          "salary": "工资:；192元/天",
-          "company": "",
-          "work_hours": "",
-          "welfare": "",
-          "job_content": "在卖场进行理货及陈列、顾客服务、整理仓库、收银等；；二、"
-        },
-        {
-          "city": "广州",
-          "title": "MD广州万菱汇兼职",
-          "url": "https://guangzhou.jianzhimao.com/job/TmM1UHVTZHRrd1k9.html",
-          "score": 6,
-          "location": "广州万菱汇店【天河区天河路230号万菱汇1层Massimo Dutti】",
-          "salary": "工资:；24元/小时",
-          "company": "",
-          "work_hours": "每周工作不少于20小时，周中2天+周末1天；",
-          "welfare": "",
-          "job_content": "卖场服务/收银台/试衣间/叠标/库房拆包补货/出货返货/减价执行/价签核对等；二、"
+          "job_content": "1、补货员:350/天；负责在商场娃娃机补货工作；2、小礼品派发:300/天+提成；负麦派发小礼品给来宾；3、促销员:300/天；负麦每日物品促销收银；4、cosplay人偶扮演:500/天；需穿上道具服装互动，走来走去；5、现场协助:280元/天；负麦维持现场秩序的工作；、职位"
         },
         {
           "city": "深圳",
-          "title": "松岗冲浪板厂长白班220元一天",
-          "url": "https://shenzhen.jianzhimao.com/job/amdheVNKSWFkVWs9.html",
-          "score": 6,
-          "location": "宝安区松岗满京华-科创工坊",
-          "salary": "工资:；220元/天",
+          "title": "插件贴标岗位一28元每小时包吃",
+          "url": "https://shenzhen.jianzhimao.com/job/dDhBZ3l6bEpRSTA9.html",
+          "score": 7,
+          "location": "广东省深圳市龙岗17666129746",
+          "salary": "工资:；28元/小时",
           "company": "",
-          "work_hours": "2026-05-23至2026-08-31",
+          "work_hours": "2026-04-20至2026-10-20",
           "welfare": "",
-          "job_content": "有装配，打螺丝/组装工作经验者优先；6.公司"
+          "job_content": "负责将产品打包装、贴标签。做事简单轻松，岗位可选可调配。；-；四、工作"
         },
         {
-          "city": "北京",
-          "title": "无学历要求180无周结客服",
-          "url": "https://beijing.jianzhimao.com/job/UmpFZmMvTkZSczA9.html",
-          "score": 6,
-          "location": "北京市海淀区北清路中关村翠湖科技园",
-          "salary": "工资:；180元/天",
+          "city": "深圳",
+          "title": "成人电子玩具打包一300每天坐班",
+          "url": "https://shenzhen.jianzhimao.com/job/NHV1b05HLzBuOEU9.html",
+          "score": 7,
+          "location": "广东省深圳市龙岗17666129746",
+          "salary": "工资:；330元/天",
           "company": "",
-          "work_hours": "9:00-18:00",
+          "work_hours": "2026-03-17至2026-09-16",
           "welfare": "",
-          "job_content": "打"
+          "job_content": "负责将产品打包装、贴标签。做事简单轻松，岗位可选可调配。；-；四、工作"
+        },
+        {
+          "city": "深圳",
+          "title": "西丽机顶盒日结210一天（包吃包住）",
+          "url": "https://shenzhen.jianzhimao.com/job/d09NaU9nb0prZ3c9.html",
+          "score": 6,
+          "location": "广东省深圳市宝安",
+          "salary": "工资:；210元/天",
+          "company": "",
+          "work_hours": "2026-03-24至2026-09-23",
+          "welfare": "",
+          "job_content": "生产机顶盒，组装、包装岗位；工作"
         },
         {
           "city": "上海",
-          "title": "图书馆高薪兼职300一天日结",
-          "url": "https://shanghai.jianzhimao.com/job/QjZjS3JMVVpEMTA9.html",
+          "title": "漫展会展现场协助工作人员",
+          "url": "https://shanghai.jianzhimao.com/job/N0FYaWpMTUZ4bzQ9.html",
+          "score": 6,
+          "location": "上海市",
+          "salary": "工资:；300元/天",
+          "company": "",
+          "work_hours": "9:00-18:00",
+          "welfare": "",
+          "job_content": "主要负责影剧院会展会务引领，验票检票，剧场服务员，秩序维护岗位工作及现场服务人品；人员"
+        },
+        {
+          "city": "北京",
+          "title": "GAP赛特奥莱招聘兼职店员",
+          "url": "https://beijing.jianzhimao.com/job/MkVpZlJNSklOcnM9.html",
+          "score": 6,
+          "location": "GAP赛特奥特莱斯店【详细地址：北京市朝阳区香江北路28号赛特奥莱】",
+          "salary": "工资:；27.7元/小时",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": "在卖场进行服装陈列，整理码放以及前台收银等。"
+        },
+        {
+          "city": "上海",
+          "title": "商场电玩城营业员300一天",
+          "url": "https://shanghai.jianzhimao.com/job/b04wWVNkTTh6ekU9.html",
           "score": 5,
-          "location": "浙江省杭州市上城",
+          "location": "上海市各大区域就近安排",
+          "salary": "工资:；300元/天",
+          "company": "",
+          "work_hours": "平时空余时间、周六日，暑假工均可。",
+          "welfare": "",
+          "job_content": "负麦导购，接待，引导，登记，整理，布置等。；4."
+        },
+        {
+          "city": "广州",
+          "title": "招聘客服专员",
+          "url": "https://guangzhou.jianzhimao.com/job/bmdtbmdvNkZFR1U9.html",
+          "score": 4,
+          "location": "广东省广州市",
+          "salary": "工资:；15元/小时",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": "•"
+        },
+        {
+          "city": "上海",
+          "title": "书籍整理300一天兼职",
+          "url": "https://shanghai.jianzhimao.com/job/aGZmVWgvS3N4YWs9.html",
+          "score": 4,
+          "location": "上海市省上海市普陀",
           "salary": "工资:；300元/天",
           "company": "",
           "work_hours": "",
@@ -1589,15 +1601,39 @@
         },
         {
           "city": "上海",
-          "title": "日结300海洋馆查票员可学生",
-          "url": "https://shanghai.jianzhimao.com/job/UmRkYW9ZREZQSHc9.html",
+          "title": "电影院派发3D眼镜290一天",
+          "url": "https://shanghai.jianzhimao.com/job/Y1ZXUzJrMU5xNUE9.html",
           "score": 4,
-          "location": "上海各区域就近分配",
-          "salary": "工资:；30元/小时",
+          "location": "上海市省上海市普陀",
+          "salary": "工资:；290元/天",
           "company": "",
           "work_hours": "",
           "welfare": "",
-          "job_content": "==；1.验票员；（查验入场票据真伪）；兼职"
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "图书管理员300一天",
+          "url": "https://shanghai.jianzhimao.com/job/RVkwNGdLSG04Ujg9.html",
+          "score": 4,
+          "location": "广东省广州市",
+          "salary": "工资:；300元/天",
+          "company": "",
+          "work_hours": "平时空余时间、周六日，暑假工均可。",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "书籍整理分类贴标300一天",
+          "url": "https://shanghai.jianzhimao.com/job/UEdtVWc5WnZMc289.html",
+          "score": 4,
+          "location": "广东省广州市",
+          "salary": "工资:；300元/天",
+          "company": "",
+          "work_hours": "平时空余时间、周六日，暑假工均可。",
+          "welfare": "",
+          "job_content": ""
         }
       ]
     }
