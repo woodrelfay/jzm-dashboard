@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27T16:31:39+08:00",
+  "updated": "2026-05-27T17:42:49+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -1407,35 +1407,35 @@
       "cities": {
         "广州": {
           "crawled": 75,
-          "passed": 10,
-          "high": 10,
+          "passed": 9,
+          "high": 9,
           "medium": 0,
           "low": 0,
-          "spam": 120
+          "spam": 123
         },
         "深圳": {
           "crawled": 75,
-          "passed": 4,
-          "high": 4,
+          "passed": 5,
+          "high": 5,
           "medium": 0,
           "low": 0,
-          "spam": 138
+          "spam": 135
         },
         "上海": {
           "crawled": 75,
-          "passed": 10,
-          "high": 10,
+          "passed": 13,
+          "high": 13,
           "medium": 0,
           "low": 0,
-          "spam": 120
+          "spam": 111
         },
         "北京": {
           "crawled": 75,
-          "passed": 1,
-          "high": 1,
+          "passed": 0,
+          "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 147
+          "spam": 150
         },
         "东莞": {
           "crawled": 75,
@@ -1480,15 +1480,15 @@
       },
       "totals": {
         "main_crawled": 300,
-        "main_passed": 25,
+        "main_passed": 27,
         "peri_crawled": 375,
         "peri_passed": 2,
         "all_crawled": 675,
-        "all_passed": 27,
-        "high": 27,
+        "all_passed": 29,
+        "high": 29,
         "medium": 0,
         "low": 0,
-        "spam": 1269
+        "spam": 1263
       },
       "passed_jobs": [
         {
@@ -1618,18 +1618,18 @@
           "job_content": ""
         },
         {
-          "city": "广州",
-          "title": "暑假工/周末肯德基麦当劳驻店配送",
-          "url": "https://guangzhou.jianzhimao.com/job/N1hQT0M4NzZ5OWs9.html",
+          "city": "深圳",
+          "title": "蓝牙新品组装包装一300每天",
+          "url": "https://shenzhen.jianzhimao.com/job/SHVuMm5RRHRnTFE9.html",
           "score": 9,
-          "location": "广东省广州市天河",
-          "salary": "工资:；400元/天",
-          "company": "深圳市捷达天安货运代理有限公司",
-          "company_url": "https://guangzhou.jianzhimao.com/qy/a0dKdXpsOFI0ZjRGMDNYZHJrVW43dz09.html",
+          "location": "广东省深圳市龙岗17666129746",
+          "salary": "工资:；330元/天",
+          "company": "深圳市明宏威科技有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/czRpR1RQcUo2TWNGMDNYZHJrVW43dz09.html",
           "verified": true,
-          "work_hours": "",
+          "work_hours": "《1》上午08:00—12:00（4小时）",
           "welfare": "",
-          "job_content": ""
+          "job_content": "负责将产品打包装、贴标签。做事简单轻松，岗位可选可调配。；-；四、工作"
         },
         {
           "city": "深圳",
@@ -1674,37 +1674,51 @@
           "job_content": "新能源自动化设备的组装、包装、测试等工序操作"
         },
         {
-          "city": "深圳",
-          "title": "打螺丝300每天一包吃住一长白班",
-          "url": "https://shenzhen.jianzhimao.com/job/NTd0SmExdnA1bVk9.html",
+          "city": "上海",
+          "title": "图书馆整理上架300一天日结",
+          "url": "https://shanghai.jianzhimao.com/job/bVZWWExSM1drTDQ9.html",
           "score": 9,
-          "location": "广东省深圳市龙岗17666129746",
+          "location": "上海购书中心、学院图书馆 ；就近区域分配原则）",
           "salary": "工资:；300元/天",
-          "company": "深圳市明宏威科技有限公司",
-          "company_url": "https://shenzhen.jianzhimao.com/qy/czRpR1RQcUo2TWNGMDNYZHJrVW43dz09.html",
+          "company": "杭州唐树企业管理有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/RENPUmY3YVhRK0FGMDNYZHJrVW43dz09.html",
           "verified": true,
           "work_hours": "",
-          "welfare": "五险一金、年终奖金、每年春节返乡津贴、中秋晚会、春节晚会、员工活动等如果您有意向【报名】",
-          "job_content": "1、普工、操作工、质检员、组装工、包装工、品管员、物料员、测试员等。；2、大部分都是坐着上班，工作内容简单轻松，易学易会。；----------------------------------------------------；三、"
+          "welfare": "",
+          "job_content": "1.书籍整理员（负责把读者放乱放错位置的书放回整理好）；2.图书破损修整（负责破损图书的修整）；3.书籍登记员（负责每天来馆的人员的登记）；4.物品摆放（负责每日打扫阅览桌面，书架，保持室内整洁"
         },
         {
           "city": "上海",
-          "title": "招聘日结兼职客服",
-          "url": "https://shanghai.jianzhimao.com/job/S0owQk4zYjlvTzg9.html",
+          "title": "共享充电宝运维全职或兼职",
+          "url": "https://shanghai.jianzhimao.com/job/ejlGTVdPcHVKNHM9.html",
           "score": 9,
           "location": "广东省广州市",
-          "salary": "工资:；200元/天",
-          "company": "上海宝卓胜企业管理有限公司",
-          "company_url": "https://shanghai.jianzhimao.com/qy/QzhDNEloeGhaZmNGMDNYZHJrVW43dz09.html",
+          "salary": "工资:；300元/天",
+          "company": "李向通",
+          "company_url": "https://shanghai.jianzhimao.com/qy/OWd5NzJDM2Zsd0lGMDNYZHJrVW43dz09.html",
           "verified": true,
           "work_hours": "",
+          "welfare": "",
+          "job_content": "根据后台定位导航，回收故障、电量异常的共享充电宝；3. 计酬标准：每回收1个充电宝结算1 至 1.5 元；4. 货品上交：可自行送至公司，也可等待公司司机每周定期上门找你收取；5. 收入水平：收益根据个人作业能力，需自备出行交通工具；6."
+        },
+        {
+          "city": "上海",
+          "title": "电影院小时工300一天",
+          "url": "https://shanghai.jianzhimao.com/job/ZlJ6WlVQUW9ybmc9.html",
+          "score": 9,
+          "location": "上海各大影院均可就近安排",
+          "salary": "工资:；300元/天",
+          "company": "上海凰繁企业管理有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/Yy9ibFJuMGZBQkFGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-05-27至2026-06-26",
           "welfare": "",
           "job_content": ""
         },
         {
           "city": "上海",
           "title": "招聘日结兼职客服",
-          "url": "https://shanghai.jianzhimao.com/job/TlFmaEFObnIyaGM9.html",
+          "url": "https://shanghai.jianzhimao.com/job/S0owQk4zYjlvTzg9.html",
           "score": 9,
           "location": "广东省广州市",
           "salary": "工资:；200元/天",
@@ -1798,48 +1812,6 @@
           "work_hours": "09:00-20:00中午休息1小时",
           "welfare": "",
           "job_content": ""
-        },
-        {
-          "city": "上海",
-          "title": "欢乐谷Cosplay装扮可学生",
-          "url": "https://shanghai.jianzhimao.com/job/eGYyYWpDWDZpOVE9.html",
-          "score": 9,
-          "location": "广东省广州市",
-          "salary": "工资:；300元/天",
-          "company": "湖南翔竭劳务有限公司",
-          "company_url": "https://shanghai.jianzhimao.com/qy/UzJud3o1NlJuSDRGMDNYZHJrVW43dz09.html",
-          "verified": true,
-          "work_hours": "周六日/节假日/平时都可兼职（可",
-          "welfare": "",
-          "job_content": ""
-        },
-        {
-          "city": "上海",
-          "title": "课程顾问",
-          "url": "https://shanghai.jianzhimao.com/job/NmpOWld1VmxVMFk9.html",
-          "score": 9,
-          "location": "上海市省上海市普陀",
-          "salary": "工资:；1000元/单",
-          "company": "上海通清教育科技有限公司",
-          "company_url": "https://shanghai.jianzhimao.com/qy/Tk5EdDNYM3NvME1GMDNYZHJrVW43dz09.html",
-          "verified": true,
-          "work_hours": "",
-          "welfare": "",
-          "job_content": ""
-        },
-        {
-          "city": "北京",
-          "title": "无学历要求180周结客服",
-          "url": "https://beijing.jianzhimao.com/job/cHhhd3FxQkxTOEk9.html",
-          "score": 9,
-          "location": "北京市海淀区北清路中关村翠湖科技园",
-          "salary": "工资:；180元/天",
-          "company": "北京恒智天成咨询有限公司",
-          "company_url": "https://beijing.jianzhimao.com/qy/Q0dKdGQyZUFqV3c9.html",
-          "verified": true,
-          "work_hours": "9:00-18:00",
-          "welfare": "",
-          "job_content": "打"
         },
         {
           "city": "东莞",
