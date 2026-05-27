@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-26T09:22:40+08:00",
+  "updated": "2026-05-27T09:22:46+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -1401,6 +1401,96 @@
           "job_content": "==；1.验票员；（查验入场票据真伪）；兼职"
         }
       ]
+    },
+    {
+      "date": "2026-05-27",
+      "cities": {
+        "广州": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "深圳": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "上海": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "北京": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "东莞": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "佛山": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "珠海": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "中山": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        },
+        "汕头": {
+          "crawled": 0,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 0
+        }
+      },
+      "totals": {
+        "main_crawled": 0,
+        "main_passed": 0,
+        "peri_crawled": 0,
+        "peri_passed": 0,
+        "all_crawled": 0,
+        "all_passed": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "spam": 0
+      },
+      "passed_jobs": []
     }
   ]
 }
