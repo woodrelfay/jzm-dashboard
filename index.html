@@ -53,6 +53,10 @@ a{color:#5B9BD5;text-decoration:none}
 .kpi-card .city-change.down{color:#FF1744}
 .kpi-card .city-change.flat{color:#6B7D8E}
 .kpi-card .city-sub{font-size:11px;color:#4A5D6E;margin-top:2px}
+.kpi-card .city-wow{font-size:12px;margin-top:2px;opacity:.85}
+.kpi-card .city-wow.up{color:#00C853}
+.kpi-card .city-wow.down{color:#FF1744}
+.kpi-card .city-wow.flat{color:#6B7D8E}
 .kpi-card.warn{border-color:#FF1744;animation:pulse-warn 2s infinite}
 @keyframes pulse-warn{0%,100%{box-shadow:0 0 0 0 rgba(255,23,68,.3)}50%{box-shadow:0 0 12px 2px rgba(255,23,68,.15)}}
 
@@ -351,16 +355,40 @@ function cityChange(latest,prev,city,field){
   return {val:diff,pct,dir:diff>0?'up':diff<0?'down':'flat'};
 }
 
+function getWeekAgoDay(latest){
+  if(!allData||!latest)return null;
+  const d=new Date(latest.date);
+  d.setDate(d.getDate()-7);
+  const target=d.toISOString().slice(0,10);
+  return allData.days.find(x=>x.date===target)||null;
+}
+
+function wowChange(latest,weekAgo,city,field){
+  if(!latest||!weekAgo)return {val:0,pct:0,dir:'flat'};
+  if(city==='__total__'){
+    const c1=latest.totals;const c2=weekAgo.totals;
+    if(!c1||!c2)return {val:0,pct:0,dir:'flat'};
+    const diff=(c1.all_passed||0)-(c2.all_passed||0);
+    const pct=c2.all_passed>0?Math.round(diff/c2.all_passed*100):0;
+    return {val:diff,pct,dir:diff>0?'up':diff<0?'down':'flat'};
+  }
+  const c1=latest.cities[city];const c2=weekAgo.cities[city];
+  if(!c1||!c2)return {val:0,pct:0,dir:'flat'};
+  const diff=(c1[field]||0)-(c2[field]||0);
+  const pct=c2[field]>0?Math.round(diff/c2[field]*100):0;
+  return {val:diff,pct,dir:diff>0?'up':diff<0?'down':'flat'};
+}
+
 // ====== Render KPI Cards ======
 function renderKPIs(){
-  const latest=getLatestDay();const prev=getPrevDay();
+  const latest=getLatestDay();const prev=getPrevDay();const weekAgo=getWeekAgoDay(latest);
   const row=document.getElementById('kpiRow');row.innerHTML='';
 
   const cities=[...MAIN,'__total__'];
   cities.forEach(city=>{
     const isTotal=city==='__total__';
     const label=isTotal?'全部城市':city;
-    let val,change;
+    let val,change,wow;
     if(isTotal){
       val=latest?latest.totals.all_passed:0;
       if(prev){
@@ -372,10 +400,14 @@ function renderKPIs(){
       val=latest&&latest.cities[city]?latest.cities[city].passed:0;
       change=cityChange(latest,prev,city,'passed');
     }
+    wow=wowChange(latest,weekAgo,city,'passed');
     const dirClass=change.dir;
     const arrow=change.dir==='up'?'↑':change.dir==='down'?'↓':'→';
     const sign=change.val>0?'+':'';
     const warn=!isTotal&&Math.abs(change.pct)>=20&&change.dir==='down';
+    const wowArrow=wow.dir==='up'?'↑':wow.dir==='down'?'↓':'→';
+    const wowSign=wow.val>0?'+':'';
+    const wowDir=wow.dir;
 
     const card=document.createElement('div');
     card.className='kpi-card'+(warn?' warn':'')+(selectedCity===city?' selected':'');
@@ -383,7 +415,8 @@ function renderKPIs(){
     card.innerHTML=`
       <div class="city-label">${label}</div>
       <div class="city-value">${val}</div>
-      <div class="city-change ${dirClass}">${arrow} ${sign}${change.val} (${sign}${change.pct}%)</div>
+      <div class="city-change ${dirClass}">${arrow} ${sign}${change.val} (${sign}${change.pct}%) 较昨</div>
+      <div class="city-wow ${wowDir}">${wowArrow} ${wowSign}${wow.val} (${wowSign}${wow.pct}%) 较上周</div>
       <div class="city-sub">${isTotal?'':latest&&latest.cities[city]?'★'+latest.cities[city].high+' 优质':'--'}</div>
     `;
     card.addEventListener('click',()=>{
@@ -424,6 +457,38 @@ function renderTrend(){
       borderColor:'#FFD600',borderWidth:1.5,borderDash:[6,3],
       pointRadius:0,pointHoverRadius:3,tension:.4,fill:false,
     });
+  }
+
+  // Month-to-date cumulative vs previous month (all-city view only)
+  if((!selectedCity||selectedCity==='__total__')&&days.length>0){
+    const curMonth=days[days.length-1].date.slice(0,7); // e.g. "2026-05"
+    const [y,m]=curMonth.split('-').map(Number);
+    const prevMonth=m===1?`${y-1}-12`:`${y}-${String(m-1).padStart(2,'0')}`;
+    const curMonthDays=days.filter(d=>d.date.startsWith(curMonth));
+    const prevMonthDays=allData.days.filter(d=>d.date.startsWith(prevMonth));
+    const cumData=[];
+    let cumCur=0,cumPrev=0,pi=0;
+    for(let i=0;i<curMonthDays.length;i++){
+      cumCur+=(curMonthDays[i].totals?curMonthDays[i].totals.all_passed:0);
+      const dom=parseInt(curMonthDays[i].date.slice(8));
+      while(pi<prevMonthDays.length&&parseInt(prevMonthDays[pi].date.slice(8))<=dom){
+        cumPrev+=(prevMonthDays[pi].totals?prevMonthDays[pi].totals.all_passed:0);pi++;
+      }
+      cumData.push({x:curMonthDays[i].date.slice(5),y:cumPrev||null});
+    }
+    if(prevMonthDays.length>0){
+      const prevLabel=prevMonth.replace('-','/');
+      datasets.push({
+        label:`${prevLabel}月同期累计`,data:cumData,
+        borderColor:'#8899AA',borderWidth:1.5,borderDash:[4,4],
+        pointRadius:0,pointHoverRadius:3,tension:.3,fill:false,
+        segment:{borderDash:[4,4]},
+      });
+      // Update note
+      const noteEl2=document.getElementById('trendNote');
+      const diff=cumCur-cumPrev;
+      noteEl2.textContent+=` · 本月累计${cumCur} · 较上月同期${diff>=0?'+':''}${diff}(${cumPrev>0?Math.round(diff/cumPrev*100):0}%)`;
+    }
   }
 
   const noteEl=document.getElementById('trendNote');
