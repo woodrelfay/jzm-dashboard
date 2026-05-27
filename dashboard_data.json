@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27T09:22:46+08:00",
+  "updated": "2026-05-27T09:31:14+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -1406,91 +1406,200 @@
       "date": "2026-05-27",
       "cities": {
         "广州": {
-          "crawled": 0,
-          "passed": 0,
-          "high": 0,
-          "medium": 0,
+          "crawled": 15,
+          "passed": 5,
+          "high": 1,
+          "medium": 4,
           "low": 0,
-          "spam": 0
+          "spam": 15
         },
         "深圳": {
-          "crawled": 0,
-          "passed": 0,
+          "crawled": 15,
+          "passed": 1,
           "high": 0,
-          "medium": 0,
+          "medium": 1,
           "low": 0,
-          "spam": 0
+          "spam": 27
         },
         "上海": {
-          "crawled": 0,
-          "passed": 0,
+          "crawled": 15,
+          "passed": 2,
           "high": 0,
-          "medium": 0,
-          "low": 0,
-          "spam": 0
+          "medium": 1,
+          "low": 1,
+          "spam": 24
         },
         "北京": {
-          "crawled": 0,
-          "passed": 0,
+          "crawled": 15,
+          "passed": 1,
           "high": 0,
-          "medium": 0,
+          "medium": 1,
           "low": 0,
-          "spam": 0
+          "spam": 27
         },
         "东莞": {
-          "crawled": 0,
+          "crawled": 15,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 0
+          "spam": 30
         },
         "佛山": {
-          "crawled": 0,
+          "crawled": 15,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 0
+          "spam": 30
         },
         "珠海": {
-          "crawled": 0,
+          "crawled": 15,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 0
+          "spam": 30
         },
         "中山": {
-          "crawled": 0,
+          "crawled": 15,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 0
+          "spam": 30
         },
         "汕头": {
-          "crawled": 0,
+          "crawled": 15,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 0
+          "spam": 30
         }
       },
       "totals": {
-        "main_crawled": 0,
-        "main_passed": 0,
-        "peri_crawled": 0,
+        "main_crawled": 60,
+        "main_passed": 9,
+        "peri_crawled": 75,
         "peri_passed": 0,
-        "all_crawled": 0,
-        "all_passed": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "spam": 0
+        "all_crawled": 135,
+        "all_passed": 9,
+        "high": 1,
+        "medium": 7,
+        "low": 1,
+        "spam": 243
       },
-      "passed_jobs": []
+      "passed_jobs": [
+        {
+          "city": "广州",
+          "title": "GAP广州君超中心店兼职",
+          "url": "https://guangzhou.jianzhimao.com/job/dmNMMjY4bmNEYjA9.html",
+          "score": 7,
+          "location": "广州君超中心店（天河区黄埔大道中652号君超中心GAP）（科韵路地铁A/B口）",
+          "salary": "工资:；23元/小时",
+          "company": "",
+          "work_hours": "每周出勤3天（含周末），出勤当天可提供4-8小时排班，法定节假日可提供出勤，能",
+          "welfare": "",
+          "job_content": "卖场服务/收银台/试衣间/叠标/库房补货/减价执行等；1、提供良好的顾客服务；；2、熟悉商品基本知识；；3、随时整理商品陈列及补货调整；；4、卖场辅助销售，整理货品及陈列，收银等。；二、"
+        },
+        {
+          "city": "广州",
+          "title": "三叶草广州乐峰广场店兼职店员",
+          "url": "https://guangzhou.jianzhimao.com/job/Z3MvUXN3eWpHc2c9.html",
+          "score": 6,
+          "location": "广州乐峰广场三叶草店（海珠区工业大道北106-108号乐峰广场B1-S25号阿迪三叶草店）；",
+          "salary": "工资:；192元/天",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": "在卖场进行理货及陈列、顾客服务、整理仓库、收银等；；二、"
+        },
+        {
+          "city": "广州",
+          "title": "ZARA广州天环广场社会兼职",
+          "url": "https://guangzhou.jianzhimao.com/job/QXIzR2UrK3JYTnc9.html",
+          "score": 6,
+          "location": "广州天环广场店【天河区天河路218号天环广场负一层ZARA】",
+          "salary": "工资:；24元/小时",
+          "company": "",
+          "work_hours": "每周工作不少于20小时，周中2天+周末1天；",
+          "welfare": "",
+          "job_content": "卖场服务/收银台/试衣间/叠标/库房拆包补货/出货返货/减价执行/价签核对等；二、"
+        },
+        {
+          "city": "广州",
+          "title": "阿迪三叶草广州荔湾领展店兼职",
+          "url": "https://guangzhou.jianzhimao.com/job/VFVYNE1XTGQ2dWc9.html",
+          "score": 6,
+          "location": "广州市荔湾区黄沙大道8号荔湾领展广场一层126-127号商铺阿迪达斯三叶草店；",
+          "salary": "工资:；192元/天",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": "在卖场进行理货及陈列、顾客服务、整理仓库、收银等；；二、"
+        },
+        {
+          "city": "广州",
+          "title": "MD广州万菱汇兼职",
+          "url": "https://guangzhou.jianzhimao.com/job/TmM1UHVTZHRrd1k9.html",
+          "score": 6,
+          "location": "广州万菱汇店【天河区天河路230号万菱汇1层Massimo Dutti】",
+          "salary": "工资:；24元/小时",
+          "company": "",
+          "work_hours": "每周工作不少于20小时，周中2天+周末1天；",
+          "welfare": "",
+          "job_content": "卖场服务/收银台/试衣间/叠标/库房拆包补货/出货返货/减价执行/价签核对等；二、"
+        },
+        {
+          "city": "深圳",
+          "title": "松岗冲浪板厂长白班220元一天",
+          "url": "https://shenzhen.jianzhimao.com/job/amdheVNKSWFkVWs9.html",
+          "score": 6,
+          "location": "宝安区松岗满京华-科创工坊",
+          "salary": "工资:；220元/天",
+          "company": "",
+          "work_hours": "2026-05-23至2026-08-31",
+          "welfare": "",
+          "job_content": "有装配，打螺丝/组装工作经验者优先；6.公司"
+        },
+        {
+          "city": "北京",
+          "title": "无学历要求180无周结客服",
+          "url": "https://beijing.jianzhimao.com/job/UmpFZmMvTkZSczA9.html",
+          "score": 6,
+          "location": "北京市海淀区北清路中关村翠湖科技园",
+          "salary": "工资:；180元/天",
+          "company": "",
+          "work_hours": "9:00-18:00",
+          "welfare": "",
+          "job_content": "打"
+        },
+        {
+          "city": "上海",
+          "title": "图书馆高薪兼职300一天日结",
+          "url": "https://shanghai.jianzhimao.com/job/QjZjS3JMVVpEMTA9.html",
+          "score": 5,
+          "location": "浙江省杭州市上城",
+          "salary": "工资:；300元/天",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "日结300海洋馆查票员可学生",
+          "url": "https://shanghai.jianzhimao.com/job/UmRkYW9ZREZQSHc9.html",
+          "score": 4,
+          "location": "上海各区域就近分配",
+          "salary": "工资:；30元/小时",
+          "company": "",
+          "work_hours": "",
+          "welfare": "",
+          "job_content": "==；1.验票员；（查验入场票据真伪）；兼职"
+        }
+      ]
     }
   ]
 }
