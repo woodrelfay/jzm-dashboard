@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27T15:33:07+08:00",
+  "updated": "2026-05-27T16:31:39+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -1406,91 +1406,301 @@
       "date": "2026-05-27",
       "cities": {
         "广州": {
-          "crawled": 15,
-          "passed": 0,
-          "high": 0,
+          "crawled": 75,
+          "passed": 10,
+          "high": 10,
           "medium": 0,
           "low": 0,
-          "spam": 30
+          "spam": 120
         },
         "深圳": {
-          "crawled": 15,
-          "passed": 0,
-          "high": 0,
-          "medium": 0,
-          "low": 0,
-          "spam": 30
-        },
-        "上海": {
-          "crawled": 15,
+          "crawled": 75,
           "passed": 4,
           "high": 4,
           "medium": 0,
           "low": 0,
-          "spam": 18
+          "spam": 138
         },
-        "北京": {
-          "crawled": 15,
-          "passed": 0,
-          "high": 0,
+        "上海": {
+          "crawled": 75,
+          "passed": 10,
+          "high": 10,
           "medium": 0,
           "low": 0,
-          "spam": 30
+          "spam": 120
         },
-        "东莞": {
-          "crawled": 15,
+        "北京": {
+          "crawled": 75,
           "passed": 1,
           "high": 1,
           "medium": 0,
           "low": 0,
-          "spam": 27
+          "spam": 147
+        },
+        "东莞": {
+          "crawled": 75,
+          "passed": 2,
+          "high": 2,
+          "medium": 0,
+          "low": 0,
+          "spam": 144
         },
         "佛山": {
-          "crawled": 15,
+          "crawled": 75,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 30
+          "spam": 150
         },
         "珠海": {
-          "crawled": 15,
+          "crawled": 75,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 30
+          "spam": 150
         },
         "中山": {
-          "crawled": 15,
+          "crawled": 75,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 30
+          "spam": 150
         },
         "汕头": {
-          "crawled": 15,
+          "crawled": 75,
           "passed": 0,
           "high": 0,
           "medium": 0,
           "low": 0,
-          "spam": 30
+          "spam": 150
         }
       },
       "totals": {
-        "main_crawled": 60,
-        "main_passed": 4,
-        "peri_crawled": 75,
-        "peri_passed": 1,
-        "all_crawled": 135,
-        "all_passed": 5,
-        "high": 5,
+        "main_crawled": 300,
+        "main_passed": 25,
+        "peri_crawled": 375,
+        "peri_passed": 2,
+        "all_crawled": 675,
+        "all_passed": 27,
+        "high": 27,
         "medium": 0,
         "low": 0,
-        "spam": 255
+        "spam": 1269
       },
       "passed_jobs": [
+        {
+          "city": "广州",
+          "title": "半天150/广州直招上岗",
+          "url": "https://guangzhou.jianzhimao.com/job/VXl4V0RyNnBTc1k9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "海珠富力城高薪岗/轻松上手",
+          "url": "https://guangzhou.jianzhimao.com/job/R0o1aGJvVFJ4TzA9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "三个半小时日结200",
+          "url": "https://guangzhou.jianzhimao.com/job/a1BxTjhpZmIzVE09.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "时间自由/高薪半天班可日结",
+          "url": "https://guangzhou.jianzhimao.com/job/bmNNY3d5WGw3b2c9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "150半天/高薪直招",
+          "url": "https://guangzhou.jianzhimao.com/job/QmR5VEpIWkhsZHc9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "广州半天班/高薪福利超全",
+          "url": "https://guangzhou.jianzhimao.com/job/akhkYklJVDkvWnc9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "半天日结150简单客服岗",
+          "url": "https://guangzhou.jianzhimao.com/job/QjJaNVh1NmU3b1k9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "高薪半天班宝妈岗/轻松上手",
+          "url": "https://guangzhou.jianzhimao.com/job/MDM3TGVWT2Yyd3c9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "日结150/广州海珠轻松半天班",
+          "url": "https://guangzhou.jianzhimao.com/job/L21oSWhDaUtGb1E9.html",
+          "score": 9,
+          "location": "广州市海珠区富力天城中心 37-38 楼",
+          "salary": "工资:；200元/天",
+          "company": "中国人寿保险股份有限公司广州市海珠支公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/LzRTSzNFSENhbzhGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "周一至周五 上午 8:30-12:00，下午自由安排！",
+          "welfare": "合规政府合作项目，无套路无风险",
+          "job_content": ""
+        },
+        {
+          "city": "广州",
+          "title": "暑假工/周末肯德基麦当劳驻店配送",
+          "url": "https://guangzhou.jianzhimao.com/job/N1hQT0M4NzZ5OWs9.html",
+          "score": 9,
+          "location": "广东省广州市天河",
+          "salary": "工资:；400元/天",
+          "company": "深圳市捷达天安货运代理有限公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/a0dKdXpsOFI0ZjRGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "深圳",
+          "title": "长白班300每天小时工不体检包吃",
+          "url": "https://shenzhen.jianzhimao.com/job/ZzNvOUZKQ3RaYU09.html",
+          "score": 9,
+          "location": "广东省深圳市龙岗17666129746",
+          "salary": "工资:；300元/天",
+          "company": "深圳市明宏威科技有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/czRpR1RQcUo2TWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-04-24至2026-10-24",
+          "welfare": "五险一金、年终奖金、每年春节返乡津贴、中秋晚会、春节晚会、员工活动等。",
+          "job_content": "1、普工、操作工、质检员、组装工、包装工、品管员、物料员、测试员等。；2、长白班，两班倒，大部分都是坐着上班，工作内容简单轻松，易学易会。；-----------------------------------------------------------------；三、"
+        },
+        {
+          "city": "深圳",
+          "title": "必胜客长期兼职周结",
+          "url": "https://shenzhen.jianzhimao.com/job/SHlBNkhyVEJWMzQ9.html",
+          "score": 9,
+          "location": "广东省广州市黄埔东苑东街31号之一（仅限办公）",
+          "salary": "工资:；18元/小时",
+          "company": "深圳群光人力资源有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/djJHLzJWL0I2SWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "深圳",
+          "title": "光明自动化设备长白班200元一天",
+          "url": "https://shenzhen.jianzhimao.com/job/eXhUWGZwbFlVMnM9.html",
+          "score": 9,
+          "location": "光明圳美",
+          "salary": "工资:；200元/天",
+          "company": "深圳群光人力资源有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/Sm5CcnRoQ3ROVkVGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-05-27至2026-08-31",
+          "welfare": "",
+          "job_content": "新能源自动化设备的组装、包装、测试等工序操作"
+        },
+        {
+          "city": "深圳",
+          "title": "打螺丝300每天一包吃住一长白班",
+          "url": "https://shenzhen.jianzhimao.com/job/NTd0SmExdnA1bVk9.html",
+          "score": 9,
+          "location": "广东省深圳市龙岗17666129746",
+          "salary": "工资:；300元/天",
+          "company": "深圳市明宏威科技有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/czRpR1RQcUo2TWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "",
+          "welfare": "五险一金、年终奖金、每年春节返乡津贴、中秋晚会、春节晚会、员工活动等如果您有意向【报名】",
+          "job_content": "1、普工、操作工、质检员、组装工、包装工、品管员、物料员、测试员等。；2、大部分都是坐着上班，工作内容简单轻松，易学易会。；----------------------------------------------------；三、"
+        },
+        {
+          "city": "上海",
+          "title": "招聘日结兼职客服",
+          "url": "https://shanghai.jianzhimao.com/job/S0owQk4zYjlvTzg9.html",
+          "score": 9,
+          "location": "广东省广州市",
+          "salary": "工资:；200元/天",
+          "company": "上海宝卓胜企业管理有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/QzhDNEloeGhaZmNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
         {
           "city": "上海",
           "title": "招聘日结兼职客服",
@@ -1535,6 +1745,62 @@
         },
         {
           "city": "上海",
+          "title": "电影院检票3D眼镜派发小时工",
+          "url": "https://shanghai.jianzhimao.com/job/NWVGZ3NqVTdlR3M9.html",
+          "score": 9,
+          "location": "上海市各大区域就近安排",
+          "salary": "工资:；300元/天",
+          "company": "成都若翰铭空商贸有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/bkh3UGtvVHp3Z3dGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "平时空余时间、周六日，暑假工均可。",
+          "welfare": "",
+          "job_content": "负责现场检票，接待，引导，登记，整理，布置等。"
+        },
+        {
+          "city": "上海",
+          "title": "展览中心检验票300一天",
+          "url": "https://shanghai.jianzhimao.com/job/RlNBVmFiejhnbXc9.html",
+          "score": 9,
+          "location": "全上海就近安排，公司展览会 备大会展中心商场活动中心，",
+          "salary": "工资:；300元/天",
+          "company": "成都若翰铭空商贸有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/bkh3UGtvVHp3Z3dGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "6-8小时:薪资200-300左右/看具体时间和任务强度2、场馆内前台 签到处礼仪:女生1.6cm以上，有服务意识:工作认真有责任心能及时处理简单问题，签到字迹要工整，及时记录现场情况和活动问题:工作",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "影院派发3D眼镜现结",
+          "url": "https://shanghai.jianzhimao.com/job/bkxoSWhhZ0Vod2M9.html",
+          "score": 9,
+          "location": "广东省广州市",
+          "salary": "工资:；300元/天",
+          "company": "临沂钦泰信息科技有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/SlROVUtxbHhFckVGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "图书整理登记摆放前台300一天",
+          "url": "https://shanghai.jianzhimao.com/job/RWdqSmtnN1pPYUU9.html",
+          "score": 9,
+          "location": "各大区域图书馆就近分配",
+          "salary": "工资:；300元/天",
+          "company": "临沂钦泰信息科技有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/SVE3VFBpWjZqOTRGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "09:00-20:00中午休息1小时",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
           "title": "欢乐谷Cosplay装扮可学生",
           "url": "https://shanghai.jianzhimao.com/job/eGYyYWpDWDZpOVE9.html",
           "score": 9,
@@ -1546,6 +1812,48 @@
           "work_hours": "周六日/节假日/平时都可兼职（可",
           "welfare": "",
           "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "课程顾问",
+          "url": "https://shanghai.jianzhimao.com/job/NmpOWld1VmxVMFk9.html",
+          "score": 9,
+          "location": "上海市省上海市普陀",
+          "salary": "工资:；1000元/单",
+          "company": "上海通清教育科技有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/Tk5EdDNYM3NvME1GMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "北京",
+          "title": "无学历要求180周结客服",
+          "url": "https://beijing.jianzhimao.com/job/cHhhd3FxQkxTOEk9.html",
+          "score": 9,
+          "location": "北京市海淀区北清路中关村翠湖科技园",
+          "salary": "工资:；180元/天",
+          "company": "北京恒智天成咨询有限公司",
+          "company_url": "https://beijing.jianzhimao.com/qy/Q0dKdGQyZUFqV3c9.html",
+          "verified": true,
+          "work_hours": "9:00-18:00",
+          "welfare": "",
+          "job_content": "打"
+        },
+        {
+          "city": "东莞",
+          "title": "贴标签包吃住每周可预支1000",
+          "url": "https://dongguan.jianzhimao.com/job/WUF5VkFxN1BvZVk9.html",
+          "score": 9,
+          "location": "广东省深圳市龙岗17666129746",
+          "salary": "工资:；300元/天",
+          "company": "深圳市明宏威科技有限公司",
+          "company_url": "https://dongguan.jianzhimao.com/qy/czRpR1RQcUo2TWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-02-08至2026-08-10",
+          "welfare": "五险一金、年终奖金、每年春节返乡津贴、中秋晚会、春节晚会、员工活动等。",
+          "job_content": "1、普工、操作工、质检员、组装工、包装工、品管员、物料员、测试员等。；2、长白班，两班倒，大部分都是坐着上班，工作内容简单轻松，易学易会。；-----------------------------------------------------------------；三、"
         },
         {
           "city": "东莞",
