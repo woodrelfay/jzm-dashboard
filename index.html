@@ -863,6 +863,16 @@ document.querySelectorAll('.range-btn').forEach(btn=>{
   });
 });
 
+// ====== Global toggle for collapsed groups ======
+function toggleGroup(gid){
+  var rows=document.querySelectorAll('.'+gid);
+  var header=document.querySelector('[data-toggle="'+gid+'"]');
+  var arrow=header?header.querySelector('.arrow'):null;
+  var anyOpen=rows.length>0&&!rows[0].classList.contains('collapsed');
+  rows.forEach(function(r){r.classList.toggle('collapsed',anyOpen)});
+  if(arrow)arrow.classList.toggle('open',!anyOpen);
+}
+
 // ====== Render Passed Jobs Table (last 5 days, grouped by date) ======
 function renderStarJobs(){
   const tbody=document.getElementById('starTableBody');
@@ -896,14 +906,6 @@ function renderStarJobs(){
     return `<span class="score-badge" style="background:#4A5D6E;color:#C8CDD0">${s}</span>`;
   }
 
-  function toggleGroup(gid){
-    var rows=document.querySelectorAll('.'+gid);
-    var header=document.querySelector('[data-toggle="'+gid+'"]');
-    var arrow=header?header.querySelector('.arrow'):null;
-    var anyOpen=rows.length>0&&!rows[0].classList.contains('collapsed');
-    rows.forEach(function(r){r.classList.toggle('collapsed',anyOpen)});
-    if(arrow)arrow.classList.toggle('open',!anyOpen);
-  }
   function jobRow(j,compName,extraClass){
     return `<tr class="job-row ${extraClass||''}">
       <td style="padding-left:14px"><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
