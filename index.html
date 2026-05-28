@@ -150,11 +150,11 @@ a{color:#5B9BD5;text-decoration:none}
 .star-table a{color:#5B9BD5;text-decoration:none}
 .star-table a:hover{text-decoration:underline}
 .star-table .no-data{text-align:center;padding:30px;color:#6B7D8E}
-.star-table .company-row{cursor:pointer;transition:background .15s}
-.star-table .company-row:hover{background:#1E3040!important}
-.star-table .company-row .arrow{display:inline-block;width:14px;font-size:10px;transition:transform .2s;color:#6B7D8E}
-.star-table .company-row .arrow.open{transform:rotate(90deg)}
-.star-table .job-row.collapsed{display:none}
+.star-table .day-header,.star-table .city-row,.star-table .company-row{cursor:pointer;transition:background .15s}
+.star-table .day-header:hover,.star-table .city-row:hover,.star-table .company-row:hover{background:#1E3040!important}
+.star-table .arrow{display:inline-block;width:14px;font-size:10px;transition:transform .2s;color:#6B7D8E}
+.star-table .arrow.open{transform:rotate(90deg)}
+.star-table tr.collapsed{display:none}
 
 /* ====== Responsive ====== */
 @media(max-width:1024px){
@@ -896,65 +896,94 @@ function renderStarJobs(){
     return `<span class="score-badge" style="background:#4A5D6E;color:#C8CDD0">${s}</span>`;
   }
 
+  function toggleGroup(gid){
+    var rows=document.querySelectorAll('.'+gid);
+    var header=document.querySelector('[data-toggle="'+gid+'"]');
+    var arrow=header?header.querySelector('.arrow'):null;
+    var anyOpen=rows.length>0&&!rows[0].classList.contains('collapsed');
+    rows.forEach(function(r){r.classList.toggle('collapsed',anyOpen)});
+    if(arrow)arrow.classList.toggle('open',!anyOpen);
+  }
+  function jobRow(j,compName,extraClass){
+    return `<tr class="job-row ${extraClass||''}">
+      <td style="padding-left:14px"><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
+      <td>${scoreBadge(j.score,j.verified)}</td>
+      <td><a href="${j.url}" target="_blank" title="${j.title}">${j.title.length>22?j.title.slice(0,22)+'…':j.title}</a></td>
+      <td title="${j.location}">${(j.location||'--').length>10?(j.location||'--').slice(0,10)+'…':(j.location||'--')}</td>
+      <td>${j.salary||'--'}</td>
+      <td>${compName.length>12?compName.slice(0,12)+'…':compName}</td>
+      <td>${j.work_hours||'--'}</td>
+      <td>${j.welfare||'--'}</td>
+      <td title="${j.job_content}">${(j.job_content||'--').length>20?(j.job_content||'--').slice(0,20)+'…':(j.job_content||'--')}</td>
+    </tr>`;
+  }
+
   let uid=0;
   let html='';
   groups.forEach((g)=>{
     const isToday=g.date===latestDate;
-    html+=`<tr style="background:#111D2B"><td colspan="10" style="padding:6px 8px;color:${isToday?'#FFD600':'#8899AA'};font-weight:600;font-size:12px;border-bottom:1px solid #2A3A4A">${isToday?'● 今天 '+g.date:g.date} · ${g.jobs.length}个</td></tr>`;
+    const did='d'+uid++;
 
-    // 按公司分组
-    const comps=new Map();
+    // Day header (collapsible)
+    html+=`<tr class="day-header" data-toggle="${did}" onclick="toggleGroup('${did}')" style="background:#111D2B">
+      <td colspan="10" style="padding:6px 8px;color:${isToday?'#FFD600':'#8899AA'};font-weight:600;font-size:12px;border-bottom:1px solid #2A3A4A">
+        <span class="arrow${isToday?' open':''}">▶</span>
+        ${isToday?'● 今天 '+g.date:g.date} · ${g.jobs.length}个岗位
+      </td></tr>`;
+
+    // 1. Group by city
+    const cities=new Map();
     g.jobs.forEach(j=>{
-      const key=j.company||'未知公司';
-      if(!comps.has(key))comps.set(key,[]);
-      comps.get(key).push(j);
+      const c=j.city||'未知';
+      if(!cities.has(c))cities.set(c,[]);
+      cities.get(c).push(j);
     });
 
-    comps.forEach((jobs,compName)=>{
-      if(jobs.length===1){
-        // 单岗位：直接展示
-        const j=jobs[0];
-        html+=`<tr class="job-row ${j.score>=7?'star-row':''}">
-          <td style="padding-left:14px"><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
-          <td>${scoreBadge(j.score,j.verified)}</td>
-          <td><a href="${j.url}" target="_blank" title="${j.title}">${j.title.length>22?j.title.slice(0,22)+'…':j.title}</a></td>
-          <td title="${j.location}">${(j.location||'--').length>10?(j.location||'--').slice(0,10)+'…':(j.location||'--')}</td>
-          <td>${j.salary||'--'}</td>
-          <td>${compName.length>12?compName.slice(0,12)+'…':compName}</td>
-          <td>${j.work_hours||'--'}</td>
-          <td>${j.welfare||'--'}</td>
-          <td title="${j.job_content}">${(j.job_content||'--').length>20?(j.job_content||'--').slice(0,20)+'…':(j.job_content||'--')}</td>
-        </tr>`;
-      }else{
-        // 多岗位公司：折叠
-        const gid='cg'+uid++;
-        html+=`<tr class="company-row" onclick="
-          var r=document.querySelectorAll('.cg${gid}');
-          var a=this.querySelector('.arrow');
-          r.forEach(function(e){e.classList.toggle('collapsed')});
-          a.classList.toggle('open');
-        " style="background:#152330">
-          <td colspan="2" style="padding:6px 8px 6px 14px">
-            <span class="arrow">▶</span>
-            <span style="color:#C8CDD0;font-weight:600;font-size:13px">${compName.length>16?compName.slice(0,16)+'…':compName}</span>
-            <span style="color:#6B7D8E;font-size:11px;margin-left:6px">${jobs.length}个岗位</span>
-          </td>
-          <td colspan="8"></td>
-        </tr>`;
-        jobs.forEach(j=>{
-          html+=`<tr class="job-row cg${gid} collapsed ${j.score>=7?'star-row':''}">
-            <td style="padding-left:20px"><span class="city-tag" style="background:${(cityColors[j.city]||'#555')}20;color:${cityColors[j.city]||'#888'}">${j.city}</span></td>
-            <td>${scoreBadge(j.score,j.verified)}</td>
-            <td><a href="${j.url}" target="_blank" title="${j.title}">${j.title.length>22?j.title.slice(0,22)+'…':j.title}</a></td>
-            <td title="${j.location}">${(j.location||'--').length>10?(j.location||'--').slice(0,10)+'…':(j.location||'--')}</td>
-            <td>${j.salary||'--'}</td>
-            <td></td>
-            <td>${j.work_hours||'--'}</td>
-            <td>${j.welfare||'--'}</td>
-            <td title="${j.job_content}">${(j.job_content||'--').length>20?(j.job_content||'--').slice(0,20)+'…':(j.job_content||'--')}</td>
+    // Ordered by main cities first
+    const cityOrder=[...MAIN].concat(g.jobs.map(j=>j.city).filter(c=>!MAIN.includes(c)));
+    const orderedCities=[...new Set(cityOrder)].filter(c=>cities.has(c));
+
+    orderedCities.forEach(city=>{
+      const cityJobs=cities.get(city);
+      const cid='c'+uid++;
+
+      // 2. Within city: group by company
+      const comps=new Map();
+      cityJobs.forEach(j=>{
+        const k=j.company||'未知公司';
+        if(!comps.has(k))comps.set(k,[]);
+        comps.get(k).push(j);
+      });
+
+      // City header (collapsed for non-today)
+      html+=`<tr class="city-row ${did}${isToday?'':' collapsed'}" data-toggle="${cid}" onclick="event.stopPropagation();toggleGroup('${cid}')" style="background:#0C1926">
+        <td colspan="10" style="padding:5px 8px 5px 20px;color:#C8CDD0;font-weight:600;font-size:12px;border-bottom:1px solid #1E2D3D">
+          <span class="arrow${isToday?' open':''}">▶</span>
+          <span class="city-tag" style="background:${(cityColors[city]||'#555')}20;color:${cityColors[city]||'#888'};margin-right:6px">${city}</span>
+          ${cityJobs.length}个岗位
+      </td></tr>`;
+
+      comps.forEach((jobs,compName)=>{
+        if(jobs.length===1){
+          // Single job: show directly
+          const j=jobs[0];
+          html+=jobRow(j,compName,`${did} ${cid}${isToday?'':' collapsed'} ${j.score>=7?'star-row':''}`);
+        }else{
+          // Multi-job company: collapsible
+          const gid='g'+uid++;
+          html+=`<tr class="company-row ${did} ${cid}${isToday?'':' collapsed'}" data-toggle="${gid}" onclick="event.stopPropagation();toggleGroup('${gid}')" style="background:#152330">
+            <td colspan="2" style="padding:5px 8px 5px 28px">
+              <span class="arrow">▶</span>
+              <span style="color:#C8CDD0;font-weight:600;font-size:13px">${compName.length>16?compName.slice(0,16)+'…':compName}</span>
+              <span style="color:#6B7D8E;font-size:11px;margin-left:6px">${jobs.length}个岗位</span>
+            </td>
+            <td colspan="8"></td>
           </tr>`;
-        });
-      }
+          jobs.forEach(j=>{
+            html+=jobRow(j,'',`${did} ${cid} ${gid} collapsed ${j.score>=7?'star-row':''}`);
+          });
+        }
+      });
     });
   });
   tbody.innerHTML=html;
