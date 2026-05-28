@@ -955,7 +955,7 @@ function renderStarJobs(){
         comps.get(k).push(j);
       });
 
-      // City header (collapsed for non-today)
+      // City header (day-collapsed for non-today)
       html+=`<tr class="city-row ${did}${isToday?'':' collapsed'}" data-toggle="${cid}" onclick="event.stopPropagation();toggleGroup('${cid}')" style="background:#0C1926">
         <td colspan="10" style="padding:5px 8px 5px 20px;color:#C8CDD0;font-weight:600;font-size:12px;border-bottom:1px solid #1E2D3D">
           <span class="arrow${isToday?' open':''}">▶</span>
@@ -965,13 +965,13 @@ function renderStarJobs(){
 
       comps.forEach((jobs,compName)=>{
         if(jobs.length===1){
-          // Single job: show directly
+          // Single job: controlled by city toggle (NOT day toggle)
           const j=jobs[0];
-          html+=jobRow(j,compName,`${did} ${cid}${isToday?'':' collapsed'} ${j.score>=7?'star-row':''}`);
+          html+=jobRow(j,compName,`${cid}${isToday?'':' collapsed'} ${j.score>=7?'star-row':''}`);
         }else{
-          // Multi-job company: collapsible
+          // Multi-job company: controlled by city toggle, internally controlled by company toggle
           const gid='g'+uid++;
-          html+=`<tr class="company-row ${did} ${cid}${isToday?'':' collapsed'}" data-toggle="${gid}" onclick="event.stopPropagation();toggleGroup('${gid}')" style="background:#152330">
+          html+=`<tr class="company-row ${cid}${isToday?'':' collapsed'}" data-toggle="${gid}" onclick="event.stopPropagation();toggleGroup('${gid}')" style="background:#152330">
             <td colspan="2" style="padding:5px 8px 5px 28px">
               <span class="arrow">▶</span>
               <span style="color:#C8CDD0;font-weight:600;font-size:13px">${compName.length>16?compName.slice(0,16)+'…':compName}</span>
@@ -980,7 +980,7 @@ function renderStarJobs(){
             <td colspan="8"></td>
           </tr>`;
           jobs.forEach(j=>{
-            html+=jobRow(j,'',`${did} ${cid} ${gid} collapsed ${j.score>=7?'star-row':''}`);
+            html+=jobRow(j,'',`${cid} ${gid} collapsed ${j.score>=7?'star-row':''}`);
           });
         }
       });
