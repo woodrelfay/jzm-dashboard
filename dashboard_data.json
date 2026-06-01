@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29T09:32:47+08:00",
+  "updated": "2026-06-01T15:29:44+08:00",
   "days": [
     {
       "date": "2026-05-09",
@@ -3184,6 +3184,251 @@
           "work_hours": "",
           "welfare": "",
           "job_content": ""
+        }
+      ]
+    },
+    {
+      "date": "2026-06-01",
+      "cities": {
+        "广州": {
+          "crawled": 75,
+          "passed": 1,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "spam": 147
+        },
+        "深圳": {
+          "crawled": 75,
+          "passed": 4,
+          "high": 4,
+          "medium": 0,
+          "low": 0,
+          "spam": 138
+        },
+        "上海": {
+          "crawled": 75,
+          "passed": 7,
+          "high": 7,
+          "medium": 0,
+          "low": 0,
+          "spam": 129
+        },
+        "北京": {
+          "crawled": 75,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 150
+        },
+        "东莞": {
+          "crawled": 75,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 150
+        },
+        "佛山": {
+          "crawled": 75,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 150
+        },
+        "珠海": {
+          "crawled": 75,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 150
+        },
+        "中山": {
+          "crawled": 75,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 150
+        },
+        "汕头": {
+          "crawled": 75,
+          "passed": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "spam": 150
+        }
+      },
+      "totals": {
+        "main_crawled": 300,
+        "main_passed": 12,
+        "peri_crawled": 375,
+        "peri_passed": 0,
+        "all_crawled": 675,
+        "all_passed": 12,
+        "high": 12,
+        "medium": 0,
+        "low": 0,
+        "spam": 1314
+      },
+      "passed_jobs": [
+        {
+          "city": "广州",
+          "title": "资料录入兼职",
+          "url": "https://guangzhou.jianzhimao.com/job/ckhGbk1nMElSbG89.html",
+          "score": 9,
+          "location": "广东省广州市",
+          "salary": "工资:；30元/小时",
+          "company": "广州市精技自动化设备有限公司",
+          "company_url": "https://guangzhou.jianzhimao.com/qy/bXkyVnRqK3d2dE1GMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-06-01至2026-07-01",
+          "welfare": "",
+          "job_content": "1. 帮公司整理客户基础信息，例如公司名称、"
+        },
+        {
+          "city": "深圳",
+          "title": "蓝牙新品组装包装一300每天",
+          "url": "https://shenzhen.jianzhimao.com/job/SHVuMm5RRHRnTFE9.html",
+          "score": 9,
+          "location": "广东省深圳市龙岗17666129746",
+          "salary": "工资:；330元/天",
+          "company": "深圳市明宏威科技有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/czRpR1RQcUo2TWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "《1》上午08:00—12:00（4小时）",
+          "welfare": "",
+          "job_content": "负责将产品打包装、贴标签。做事简单轻松，岗位可选可调配。；-；四、工作"
+        },
+        {
+          "city": "深圳",
+          "title": "松岗普工日结240一天（提供住）",
+          "url": "https://shenzhen.jianzhimao.com/job/RkkrT2RxV0xNOTg9.html",
+          "score": 9,
+          "location": "松岗碧头地铁站附近",
+          "salary": "工资:；240元/天",
+          "company": "深圳群光人力资源有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/TlYvOHJvTndQQWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-03-16至2026-09-15",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "深圳",
+          "title": "周结松岗冲浪板厂240一天",
+          "url": "https://shenzhen.jianzhimao.com/job/YU1vVzg1a2JsMFE9.html",
+          "score": 9,
+          "location": "宝安区松岗满京华-科创工坊",
+          "salary": "工资:；240元/天",
+          "company": "深圳群光人力资源有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/TlYvOHJvTndQQWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-03-16至2026-09-15",
+          "welfare": "",
+          "job_content": "装配 打螺丝 组装等工作；6.公司"
+        },
+        {
+          "city": "深圳",
+          "title": "松岗电子厂日结200一天",
+          "url": "https://shenzhen.jianzhimao.com/job/UWllWGZMZmVIRzQ9.html",
+          "score": 9,
+          "location": "松岗富比伦鼎丰高新产业园",
+          "salary": "工资:；200元/天",
+          "company": "深圳群光人力资源有限公司",
+          "company_url": "https://shenzhen.jianzhimao.com/qy/TlYvOHJvTndQQWNGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "2026-04-17至2026-10-17",
+          "welfare": "",
+          "job_content": "组装，贴标，检测等岗位"
+        },
+        {
+          "city": "上海",
+          "title": "便利店营业员300一天包午饭",
+          "url": "https://shanghai.jianzhimao.com/job/TVgwMFdnZVVZTUU9.html",
+          "score": 9,
+          "location": "上海市各大区域就近安排",
+          "salary": "工资:；300元/天",
+          "company": "临沂钦泰信息科技有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/SVE3VFBpWjZqOTRGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "平时空余时间、周六日，",
+          "welfare": "",
+          "job_content": "负责现场接待，引导，分捡，整理，布置等。"
+        },
+        {
+          "city": "上海",
+          "title": "迪士尼COACH咖啡店长期兼职",
+          "url": "https://shanghai.jianzhimao.com/job/RjNGZUhiK2p4anM9.html",
+          "score": 9,
+          "location": "上海市省上海市静安人才大厦梅园路77号1515室",
+          "salary": "工资:；30元/小时",
+          "company": "上海新绿服务外包有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/cm90N3NuY0kxM1k9.html",
+          "verified": true,
+          "work_hours": "",
+          "welfare": "",
+          "job_content": "有餐饮店兼职经验，会做咖啡最好"
+        },
+        {
+          "city": "上海",
+          "title": "艺术展检票接待300一天日结",
+          "url": "https://shanghai.jianzhimao.com/job/d3M4WkpaMmVjYUU9.html",
+          "score": 9,
+          "location": "上海各个区域就近分配",
+          "salary": "工资:；300元/天",
+          "company": "深圳市南山区飞宏劳务中心",
+          "company_url": "https://shanghai.jianzhimao.com/qy/NUN5WFdjZVYrUUVGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "09:00-17:00，有休息时间",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "游乐园检票日结300一天",
+          "url": "https://shanghai.jianzhimao.com/job/YzBydTRZcDErdFE9.html",
+          "score": 9,
+          "location": "上海市省上海市徐汇",
+          "salary": "工资:；300元/天",
+          "company": "西安皇铭清人力资源有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/anNwVmVnc3lPd1VGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "8:00-22:00，自选4-10小时，有休息时间3.工资待遇:300-500/天不等，当天结算",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "游乐园检票300一天日结",
+          "url": "https://shanghai.jianzhimao.com/job/Qm9JbUIyekZhYTA9.html",
+          "score": 9,
+          "location": "上海市省上海市徐汇",
+          "salary": "工资:；300元/天",
+          "company": "西安皇铭清人力资源有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/anNwVmVnc3lPd1VGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "8:00-22:00，自选4-10小时，有休息时间3.工资待遇:300-500/天不等，当天结算",
+          "welfare": "",
+          "job_content": ""
+        },
+        {
+          "city": "上海",
+          "title": "书籍整理280一天日结",
+          "url": "https://shanghai.jianzhimao.com/job/RThUNnowakpqeDQ9.html",
+          "score": 9,
+          "location": "上海市各大区域就近安排 岗位分配：浦东 松江 闵行 黄浦 虹口 嘉定 长宁区 青浦 闸北 徐汇 宝山等城区皆可就近安排",
+          "salary": "工资:；280元/天",
+          "company": "杭州唐树企业管理有限公司",
+          "company_url": "https://shanghai.jianzhimao.com/qy/RENPUmY3YVhRK0FGMDNYZHJrVW43dz09.html",
+          "verified": true,
+          "work_hours": "平时空余时间、周六日，暑假工均可。",
+          "welfare": "",
+          "job_content": "工作主要负责书籍的整理摆放，新书分类上下架，借书还书来访前台登记工作！；1.18岁35岁，"
         }
       ]
     }
